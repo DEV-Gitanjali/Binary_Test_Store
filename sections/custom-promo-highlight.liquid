@@ -1,41 +1,41 @@
-{{ 'custom-promo.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'custom-promo.js' | asset_url }}" defer="defer"></script>
+{{ 'custom-promo-highlight.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-promo-highlight.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
-  .promo-cards-{{ section.id }} {
+  .promo-highlight-{{ section.id }} {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    --pc-columns-desktop: {{ section.settings.columns_desktop }};
-    --pc-columns-mobile: {{ section.settings.columns_mobile }};
-    --pc-card-gap: {{ section.settings.card_gap }}px;
-    --pc-card-padding: {{ section.settings.card_padding }}px;
-    --pc-card-radius: {{ section.settings.card_radius }}px;
-    --pc-title-color: {{ section.settings.title_color }};
-    --pc-title-font-size: {{ section.settings.title_font_size }}px;
-    --pc-subtitle-font-weight: {{ section.settings.subtitle_font_weight }};
+    --ph-columns-desktop: {{ section.settings.columns_desktop }};
+    --ph-columns-mobile: {{ section.settings.columns_mobile }};
+    --ph-card-radius: {{ section.settings.card_radius }}px;
+    --ph-card-padding: {{ section.settings.card_padding }}px;
+    --ph-card-gap: {{ section.settings.card_gap }}px;
+    --ph-title-color: {{ section.settings.title_color }};
+    --ph-title-font-size: {{ section.settings.title_font_size }}px;
+    --ph-subtitle-font-weight: {{ section.settings.subtitle_font_weight }};
     {%- if section.settings.section_background != blank %}
     background-color: {{ section.settings.section_background }};
     {%- endif %}
   }
 
   @media screen and (min-width: 750px) {
-    .promo-cards-{{ section.id }} {
+    .promo-highlight-{{ section.id }} {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 {%- endstyle -%}
 
-<promo-cards id="PromoCards-{{ section.id }}" class="promo-cards promo-cards-{{ section.id }}">
-  <div class="promo-cards__wrapper page-width">
+<promo-highlight id="PromoHighlight-{{ section.id }}" class="promo-highlight promo-highlight-{{ section.id }}">
+  <div class="promo-highlight__wrapper page-width">
     {%- if section.settings.heading != blank -%}
-      <h2 class="promo-cards__heading {{ section.settings.heading_size }}">
+      <h2 class="promo-highlight__heading {{ section.settings.heading_size }}">
         {{ section.settings.heading | escape }}
       </h2>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <ul class="promo-cards__list" role="list">
+      <ul class="promo-highlight__list" role="list">
         {%- for block in section.blocks -%}
           {%- liquid
             assign card_background = block.settings.background_color
@@ -43,16 +43,16 @@
               assign card_background = block.settings.background_gradient
             endif
           -%}
-          <li class="promo-cards__item" {{ block.shopify_attributes }}>
+          <li class="promo-highlight__item" {{ block.shopify_attributes }}>
             <div
-              class="promo-card"
-              style="--pc-card-bg: {{ card_background }}; --pc-subtitle-color: {{ block.settings.subtitle_color }}; --pc-card-border: {{ block.settings.border_color }};"
+              class="promo-highlight__card"
+              style="--ph-card-bg: {{ card_background }}; --ph-card-border: {{ block.settings.border_color }}; --ph-subtitle-color: {{ block.settings.subtitle_color }};"
               {% if block.settings.link != blank %}
                 data-href="{{ block.settings.link }}"
               {% endif %}
             >
               {%- if block.settings.image != blank -%}
-                <div class="promo-card__icon">
+                <div class="promo-highlight__icon">
                   {{
                     block.settings.image
                     | image_url: width: 160
@@ -61,21 +61,21 @@
                 </div>
               {%- endif -%}
 
-              <div class="promo-card__body">
+              <div class="promo-highlight__body">
                 {%- if block.settings.title != blank or block.settings.subtitle != blank -%}
-                  <p class="promo-card__title">
+                  <p class="promo-highlight__title">
                     {%- if block.settings.title != blank -%}
                       {{- block.settings.title -}}
                     {%- endif -%}
                     {%- if block.settings.subtitle != blank -%}
-                      {{ ' ' }}<span class="promo-card__subtitle">{{- block.settings.subtitle -}}</span>
+                      {{ ' ' }}<span class="promo-highlight__subtitle">{{- block.settings.subtitle -}}</span>
                     {%- endif -%}
                   </p>
                 {%- endif -%}
               </div>
 
               {%- if section.settings.show_arrow -%}
-                <span class="promo-card__arrow">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                <span class="promo-highlight__arrow">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               {%- endif -%}
             </div>
           </li>
@@ -83,11 +83,11 @@
       </ul>
     {%- endif -%}
   </div>
-</promo-cards>
+</promo-highlight>
 
 {% schema %}
 {
-  "name": "Custom cards",
+  "name": "Promo highlight cards",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -290,7 +290,7 @@
   ],
   "presets": [
     {
-      "name": "Custom cards",
+      "name": "Promo highlight cards",
       "blocks": [
         {
           "type": "promo_card",

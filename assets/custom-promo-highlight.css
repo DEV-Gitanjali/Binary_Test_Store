@@ -1,0 +1,110 @@
+promo-highlight {
+  display: block;
+}
+
+.promo-highlight__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 160rem;
+}
+
+.promo-highlight__heading {
+  margin: 0;
+  font-weight: 700;
+}
+
+.promo-highlight__list {
+  display: grid;
+  grid-template-columns: repeat(var(--ph-columns-mobile, 1), 1fr);
+  gap: var(--ph-card-gap, 20px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .promo-highlight__list {
+    grid-template-columns: repeat(var(--ph-columns-desktop, 3), 1fr);
+  }
+}
+
+.promo-highlight__item {
+  display: flex;
+}
+
+.promo-highlight__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  width: 100%;
+  padding: var(--ph-card-padding, 16px);
+  border-radius: var(--ph-card-radius, 20px);
+  background: var(--ph-card-bg, #f0f0f0);
+  border: 1px solid var(--ph-card-border, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-highlight__card[data-href] {
+  cursor: pointer;
+}
+
+.promo-highlight__card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.6rem 1.4rem rgb(0 0 0 / 0.08);
+}
+
+.promo-highlight__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.6);
+}
+
+.promo-highlight__icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.promo-highlight__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.promo-highlight__title {
+  margin: 0;
+  color: var(--ph-title-color, inherit);
+  font-size: var(--ph-title-font-size, 1.5rem);
+  line-height: 1.4;
+}
+
+.promo-highlight__subtitle {
+  display: block;
+  color: var(--ph-subtitle-color, inherit);
+  font-weight: var(--ph-subtitle-font-weight, 700);
+}
+
+.promo-highlight__arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ph-title-color, inherit);
+}
+
+.promo-highlight__arrow svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-highlight__card {
+    transition: none;
+  }
+}

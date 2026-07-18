@@ -1,6 +1,6 @@
-class PromoCards extends HTMLElement {
+class PromoHighlight extends HTMLElement {
   connectedCallback() {
-    this.querySelectorAll('.promo-card[data-href]').forEach((card) => {
+    this.querySelectorAll('.promo-highlight__card[data-href]').forEach((card) => {
       card.addEventListener('click', (event) => {
         if (event.target.closest('a, button')) return;
         const href = card.dataset.href;
@@ -10,4 +10,4 @@ class PromoCards extends HTMLElement {
   }
 }
 
-customElements.define('promo-cards', PromoCards);
+customElements.define('promo-highlight', PromoHighlight);

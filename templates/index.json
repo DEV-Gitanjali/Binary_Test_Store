@@ -138,11 +138,104 @@
         "mobile_media_height": 200,
         "accessibility_info": "Featured slides"
       }
+    },
+    "custom_services_grid_rzXBPQ": {
+      "type": "custom-services-grid",
+      "blocks": {
+        "service_card_kpd344": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/house.svg",
+            "title": "Residential Vastu",
+            "background_color": "#e4f9eb",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_Gft9jc": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/office.svg",
+            "title": "Commercial Vastu",
+            "background_color": "#f8ecd9",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_VMj8cp": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/industry.svg",
+            "title": "Industrial Vastu",
+            "background_color": "#e5e2ff",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_wiekMK": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/numerology.svg",
+            "title": "Numerology",
+            "background_color": "#f9e4e8",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_rVBcbb": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_x0020_1.svg",
+            "title": "Gemstone",
+            "background_color": "#e3f5e4",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_y9hiq3": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/beads.svg",
+            "title": "Rudraksha",
+            "background_color": "#ccdff6",
+            "background_gradient": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_card_kpd344",
+        "service_card_Gft9jc",
+        "service_card_VMj8cp",
+        "service_card_wiekMK",
+        "service_card_rVBcbb",
+        "service_card_y9hiq3"
+      ],
+      "name": "Services card grid",
+      "settings": {
+        "heading": "Our Services",
+        "heading_size": "h1",
+        "description": "<p>Our experts provide effective Numerology and vastu Services to the clients across the globe. Life is not a bed of roses; it is a path full of thorns. Life has a number of problems to face. Such problems can be resolved with the help of intelligence. Numerology and vastu indicates the various ways in which problems of life can be resolved. It is a science of rare powers.<br/><br/></p>",
+        "text_alignment": "center",
+        "columns_desktop": 6,
+        "columns_mobile": 3,
+        "card_gap": 28,
+        "card_padding": 18,
+        "card_radius": 16,
+        "heading_color": "#143f71",
+        "text_color": "#001227",
+        "font_size": 14,
+        "font_weight": "600",
+        "section_background": "#FFFFFF",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "custom_slide_Rxk7wV"
+    "custom_slide_Rxk7wV",
+    "custom_services_grid_rzXBPQ"
   ]
 }

@@ -21,7 +21,7 @@ services-grid {
 }
 
 .services-grid__wrapper--center .services-grid__description {
-  max-width: 76rem;
+  max-width: calc(106rem - -63px);
   margin-inline: auto;
 }
 

@@ -6,7 +6,6 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     --ph-columns-desktop: {{ section.settings.columns_desktop }};
-    --ph-columns-mobile: {{ section.settings.columns_mobile }};
     --ph-card-radius: {{ section.settings.card_radius }}px;
     --ph-card-padding: {{ section.settings.card_padding }}px;
     --ph-card-gap: {{ section.settings.card_gap }}px;
@@ -75,12 +74,35 @@
               </div>
 
               {%- if section.settings.show_arrow -%}
-                <span class="promo-highlight__arrow">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                <span class="promo-highlight__arrow">
+                  {%- if block.settings.arrow_icon != blank -%}
+                    {{
+                      block.settings.arrow_icon
+                      | image_url: width: 64
+                      | image_tag: loading: 'lazy', widths: '32, 48, 64'
+                    }}
+                  {%- else -%}
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  {%- endif -%}
+                </span>
               {%- endif -%}
             </div>
           </li>
         {%- endfor -%}
       </ul>
+
+      {%- if section.blocks.size > 1 -%}
+        <div class="promo-highlight__dots">
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="promo-highlight__dot{% if forloop.first %} is-active{% endif %}"
+              data-index="{{ forloop.index0 }}"
+              aria-label="{{ 'general.slider.name' | t: default: 'Go to promo' }} {{ forloop.index }}"
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </promo-highlight>
@@ -132,15 +154,6 @@
       "step": 1,
       "label": "Columns on desktop",
       "default": 3
-    },
-    {
-      "type": "range",
-      "id": "columns_mobile",
-      "min": 1,
-      "max": 2,
-      "step": 1,
-      "label": "Columns on mobile",
-      "default": 1
     },
     {
       "type": "range",
@@ -284,6 +297,12 @@
           "id": "link",
           "label": "Link",
           "info": "Optional. Makes the whole card clickable."
+        },
+        {
+          "type": "image_picker",
+          "id": "arrow_icon",
+          "label": "Arrow icon",
+          "info": "Optional. Replaces the default arrow with your own image."
         }
       ]
     }

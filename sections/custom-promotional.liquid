@@ -1,5 +1,5 @@
-{{ 'custom-promo-card.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'custom-promo-card.js' | asset_url }}" defer="defer"></script>
+{{ 'custom-promo.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-promo.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .promo-cards-{{ section.id }} {
@@ -87,7 +87,7 @@
 
 {% schema %}
 {
-  "name": "Custom promocards",
+  "name": "Custom cards",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -290,7 +290,7 @@
   ],
   "presets": [
     {
-      "name": "Custom promocards",
+      "name": "Custom cards",
       "blocks": [
         {
           "type": "promo_card",

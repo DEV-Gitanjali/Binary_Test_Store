@@ -86,7 +86,7 @@
           "settings": {
             "media_type": "image",
             "desktop_image": "shopify://shop_images/Group_26042_f4ccc1a0-a79f-4167-a56f-307851eabf78.png",
-            "mobile_image": "shopify://shop_images/Group_21186.png",
+            "mobile_image": "shopify://shop_images/Group_21186_2x_00b9cb55-d68e-42c9-9f02-32768bed0002.png",
             "overlay_opacity": 20,
             "heading": "",
             "heading_size": "h1",
@@ -129,13 +129,13 @@
       "name": "Custom slideshow",
       "settings": {
         "auto_rotate": true,
-        "change_slides_speed": 4,
+        "change_slides_speed": 5,
         "slider_visual": "dots",
         "enable_video_loop": false,
         "desktop_media_width": 100,
         "desktop_media_height": 600,
-        "mobile_media_width": 90,
-        "mobile_media_height": 440,
+        "mobile_media_width": 100,
+        "mobile_media_height": 200,
         "accessibility_info": "Featured slides"
       }
     }

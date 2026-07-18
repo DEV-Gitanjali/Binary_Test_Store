@@ -13,6 +13,7 @@
     --scg-text-color: {{ section.settings.text_color }};
     --scg-font-size: {{ section.settings.font_size }}px;
     --scg-font-weight: {{ section.settings.font_weight }};
+    --scg-heading-color: {{ section.settings.heading_color }};
     {%- if section.settings.section_background != blank %}
     background-color: {{ section.settings.section_background }};
     {%- endif %}
@@ -27,20 +28,35 @@
 {%- endstyle -%}
 
 <services-grid id="ServicesGrid-{{ section.id }}" class="services-grid services-grid-{{ section.id }}">
-  <div class="services-grid__wrapper page-width">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="services-grid__heading {{ section.settings.heading_size }}">
-        {{ section.settings.heading | escape }}
-      </h2>
+  <div class="services-grid__wrapper page-width services-grid__wrapper--{{ section.settings.text_alignment }}">
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+      <div class="services-grid__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="services-grid__heading {{ section.settings.heading_size }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="services-grid__description rte">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
       <ul class="services-grid__list" role="list">
         {%- for block in section.blocks -%}
+          {%- liquid
+            assign card_background = block.settings.background_color
+            if block.settings.background_gradient != blank
+              assign card_background = block.settings.background_gradient
+            endif
+          -%}
           <li class="services-grid__item" {{ block.shopify_attributes }}>
             <div
               class="services-grid__card"
-              style="--scg-card-bg: {{ block.settings.background_color }};"
+              style="--scg-card-bg: {{ card_background }};"
               {% if block.settings.link != blank %}
                 data-href="{{ block.settings.link }}"
               {% endif %}
@@ -105,6 +121,22 @@
       "default": "h1"
     },
     {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Our experts provide effective Numerology and vastu Services to the clients across the globe.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Heading and description alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
       "type": "header",
       "content": "Grid layout"
     },
@@ -115,7 +147,7 @@
       "max": 6,
       "step": 1,
       "label": "Columns on desktop",
-      "default": 3
+      "default": 6
     },
     {
       "type": "range",
@@ -124,7 +156,7 @@
       "max": 3,
       "step": 1,
       "label": "Columns on mobile",
-      "default": 2
+      "default": 3
     },
     {
       "type": "range",
@@ -154,7 +186,17 @@
       "step": 2,
       "unit": "px",
       "label": "Card border radius",
-      "default": 16
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1E3A8A"
     },
     {
       "type": "header",
@@ -164,7 +206,7 @@
       "type": "color",
       "id": "text_color",
       "label": "Text color",
-      "default": "#1A1A1A"
+      "default": "#000000"
     },
     {
       "type": "range",
@@ -238,7 +280,13 @@
           "type": "color",
           "id": "background_color",
           "label": "Card background color",
-          "default": "#F0F0F0"
+          "default": "#F9E4E8"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Card background gradient",
+          "info": "Overrides the solid background color above when set."
         },
         {
           "type": "url",
@@ -253,12 +301,12 @@
     {
       "name": "Services card grid",
       "blocks": [
-        { "type": "service_card", "settings": { "title": "Residential Vastu", "background_color": "#D7E8F8" } },
-        { "type": "service_card", "settings": { "title": "Commercial Vastu", "background_color": "#FBE7D2" } },
-        { "type": "service_card", "settings": { "title": "Industrial Vastu", "background_color": "#E6E0F8" } },
-        { "type": "service_card", "settings": { "title": "Numerology", "background_color": "#FBE0EA" } },
-        { "type": "service_card", "settings": { "title": "Gemstone", "background_color": "#DFF3E3" } },
-        { "type": "service_card", "settings": { "title": "Rudraksha", "background_color": "#F3E6D2" } }
+        { "type": "service_card", "settings": { "title": "Residential Vastu", "background_color": "#DEF2F4" } },
+        { "type": "service_card", "settings": { "title": "Commercial Vastu", "background_color": "#FDEBD3" } },
+        { "type": "service_card", "settings": { "title": "Industrial Vastu", "background_color": "#E8E1F9" } },
+        { "type": "service_card", "settings": { "title": "Numerology", "background_color": "#F9E4E8" } },
+        { "type": "service_card", "settings": { "title": "Gemstone", "background_color": "#E1F5E8" } },
+        { "type": "service_card", "settings": { "title": "Rudraksha", "background_color": "#DCEBFB" } }
       ]
     }
   ]

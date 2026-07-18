@@ -235,7 +235,7 @@ custom-slideshow {
 }
 
 .custom-slideshow__arrow:hover {
-  background: rgb(255 255 255 / 1);
+  background: #F4996C;
   transform: translateY(-50%) scale(1.06);
 }
 
@@ -351,6 +351,13 @@ custom-slideshow {
   border: none;
   background: transparent;
   cursor: pointer;
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .custom-slideshow__nav {
+    display: none;
+  }
 }
 
 .custom-slideshow__playpause .svg-wrapper {

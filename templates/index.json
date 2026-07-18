@@ -226,8 +226,85 @@
         "text_color": "#001227",
         "font_size": 14,
         "font_weight": "600",
-        "section_background": "#FFFFFF",
+        "section_background": "#ffffff",
         "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "custom_premium_services_1": {
+      "type": "custom-premium-services",
+      "blocks": {
+        "premium_service_card_1": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/numerology.svg",
+            "title": "Numerology Report",
+            "background_color": "#fff1cc",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_2": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/g2151.svg",
+            "title": "Vastu Evaluation Report",
+            "background_color": "#fff1cc",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_3": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/x33_6.svg",
+            "title": "Astro Vastu Fortune Report",
+            "background_color": "#fff1cc",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_WCDrVt": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/x33_6.svg",
+            "title": "Astro Vastu Fortune Report",
+            "background_color": "#fff1cc",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": true
+          }
+        }
+      },
+      "block_order": [
+        "premium_service_card_1",
+        "premium_service_card_2",
+        "premium_service_card_3",
+        "premium_service_card_WCDrVt"
+      ],
+      "name": "Premium Services",
+      "settings": {
+        "heading": "Premium Services",
+        "heading_size": "h1",
+        "description": "",
+        "text_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "card_gap": 8,
+        "card_padding": 16,
+        "card_radius": 12,
+        "card_width": 400,
+        "card_height": 160,
+        "heading_color": "#143f71",
+        "text_color": "#4a3b00",
+        "font_size": 15,
+        "font_weight": "600",
+        "section_background": "#ffffff",
+        "padding_top": 40,
+        "padding_horizontal": 48,
         "padding_bottom": 56
       }
     }
@@ -236,6 +313,7 @@
     "image_banner",
     "featured_collection",
     "custom_slide_Rxk7wV",
-    "custom_services_grid_rzXBPQ"
+    "custom_services_grid_rzXBPQ",
+    "custom_premium_services_1"
   ]
 }

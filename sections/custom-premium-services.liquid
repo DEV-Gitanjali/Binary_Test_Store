@@ -1,0 +1,437 @@
+{{ 'custom-services-grid.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-services-grid.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .services-grid-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    --scg-columns-desktop: {{ section.settings.columns_desktop }};
+    --scg-columns-mobile: {{ section.settings.columns_mobile }};
+    --scg-card-radius: {{ section.settings.card_radius }}px;
+    --scg-card-padding: {{ section.settings.card_padding }}px;
+    --scg-card-gap: {{ section.settings.card_gap }}px;
+    --scg-text-color: {{ section.settings.text_color }};
+    --scg-font-size: {{ section.settings.font_size }}px;
+    --scg-font-weight: {{ section.settings.font_weight }};
+    --scg-heading-color: {{ section.settings.heading_color }};
+    {%- if section.settings.section_background != blank %}
+    background-color: {{ section.settings.section_background }};
+    {%- endif %}
+  }
+
+  .services-grid-{{ section.id }} .services-grid__wrapper {
+    padding-left: calc(1.5rem + {{ section.settings.padding_horizontal | times: 0.5 | round: 0 }}px);
+    padding-right: calc(1.5rem + {{ section.settings.padding_horizontal | times: 0.5 | round: 0 }}px);
+  }
+
+  .services-grid-{{ section.id }} .services-grid__item {
+    justify-content: center;
+  }
+
+  .services-grid-{{ section.id }} .services-grid__card {
+    width: 100%;
+    max-width: {{ section.settings.card_width }}px;
+    min-height: {{ section.settings.card_height }}px;
+    margin-inline: auto;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .services-grid-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__wrapper {
+      padding-left: calc(5rem + {{ section.settings.padding_horizontal }}px);
+      padding-right: calc(5rem + {{ section.settings.padding_horizontal }}px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .services-grid-{{ section.id }} .services-grid__wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__header {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__heading {
+      font-weight: 600;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__list {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__item {
+      flex: 0 0 auto;
+      width: 29%;
+      scroll-snap-align: start;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__card {
+      text-align: center;
+      min-height: auto;
+      padding: 10px;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__icon {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+
+    .services-grid-{{ section.id }} .services-grid__title {
+      font-size: 11px;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .services-grid-{{ section.id }} .services-grid__item--peek {
+      display: none;
+    }
+  }
+{%- endstyle -%}
+
+<services-grid id="PremiumServices-{{ section.id }}" class="services-grid services-grid-{{ section.id }}">
+  <div class="services-grid__wrapper page-width services-grid__wrapper--{{ section.settings.text_alignment }}">
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+      <div class="services-grid__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="services-grid__heading {{ section.settings.heading_size }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="services-grid__description rte">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="services-grid__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign card_background = block.settings.background_color
+            if block.settings.background_gradient != blank
+              assign card_background = block.settings.background_gradient
+            endif
+          -%}
+          <li
+            class="services-grid__item{% if block.settings.mobile_peek_only %} services-grid__item--peek{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <div
+              class="services-grid__card"
+              style="--scg-card-bg: {{ card_background }};"
+              {% if block.settings.link != blank %}
+                data-href="{{ block.settings.link }}"
+              {% endif %}
+            >
+              {%- if block.settings.icon != blank -%}
+                <div class="services-grid__icon">
+                  {{
+                    block.settings.icon
+                    | image_url: width: 200
+                    | image_tag: loading: 'lazy', widths: '100, 150, 200'
+                  }}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <p class="services-grid__title">
+                  {%- if block.settings.link != blank -%}
+                    <a href="{{ block.settings.link }}" class="services-grid__title-link">
+                      {{- block.settings.title | escape -}}
+                    </a>
+                  {%- else -%}
+                    {{- block.settings.title | escape -}}
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</services-grid>
+
+{% schema %}
+{
+  "name": "Premium Services",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Premium Services"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" },
+        { "value": "hxl", "label": "Extra large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Heading and description alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Grid layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns on mobile",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between cards",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 120,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card width",
+      "default": 360
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "min": 120,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card height",
+      "default": 160
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1E3A8A"
+    },
+    {
+      "type": "header",
+      "content": "Card text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#4A3B00"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background color"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 68
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Left/right spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "premium_service_card",
+      "name": "Premium service card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon/image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service title",
+          "default": "Premium service"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Card background color",
+          "default": "#FFF1CC"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Card background gradient",
+          "info": "Overrides the solid background color above when set."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional. Makes the whole card clickable."
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_peek_only",
+          "label": "Peek card (mobile only)",
+          "info": "Hides this card on desktop. Use it as a trailing spacer card so the mobile carousel shows a sliver of a next card, hinting that it scrolls.",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium Services",
+      "blocks": [
+        {
+          "type": "premium_service_card",
+          "settings": { "title": "Numerology Report", "background_color": "#FFF1CC" }
+        },
+        {
+          "type": "premium_service_card",
+          "settings": { "title": "Vastu Evaluation Report", "background_color": "#FFF1CC" }
+        },
+        {
+          "type": "premium_service_card",
+          "settings": { "title": "Astro Vastu Fortune Report", "background_color": "#FFF1CC" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

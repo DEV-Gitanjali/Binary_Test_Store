@@ -1,0 +1,111 @@
+promo-cards {
+  display: block;
+}
+
+.promo-cards__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.promo-cards__heading {
+  margin: 0;
+}
+
+.promo-cards__list {
+  display: grid;
+  grid-template-columns: repeat(var(--pc-columns-mobile, 1), 1fr);
+  gap: var(--pc-card-gap, 16px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .promo-cards__list {
+    grid-template-columns: repeat(var(--pc-columns-desktop, 3), 1fr);
+  }
+}
+
+.promo-cards__item {
+  display: flex;
+}
+
+.promo-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  width: 100%;
+  padding: var(--pc-card-padding, 16px);
+  border-radius: var(--pc-card-radius, 20px);
+  background: var(--pc-card-bg, #f0f0f0);
+  border: 1px solid var(--pc-card-border, transparent);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-card[data-href] {
+  cursor: pointer;
+}
+
+.promo-card:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.6rem 1.4rem rgb(0 0 0 / 0.08);
+}
+
+.promo-card__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.promo-card__icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.promo-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.promo-card__title {
+  margin: 0;
+  color: var(--pc-title-color, inherit);
+  font-size: var(--pc-title-font-size, 1.5rem);
+  line-height: 1.35;
+}
+
+.promo-card__subtitle {
+  color: var(--pc-subtitle-color, inherit);
+  font-weight: var(--pc-subtitle-font-weight, 700);
+}
+
+.promo-card__arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--pc-title-color, inherit);
+}
+
+.promo-card__arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-card {
+    transition: none;
+  }
+}

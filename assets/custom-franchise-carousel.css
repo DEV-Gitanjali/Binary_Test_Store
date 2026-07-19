@@ -1,0 +1,318 @@
+franchise-carousel {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.franchise-carousel__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.franchise-carousel__wave svg {
+  display: block;
+  width: 100%;
+  height: 6rem;
+}
+
+.franchise-carousel__wave path {
+  fill: var(--fc-wave-color, #ffffff);
+}
+
+.franchise-carousel__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  max-width: 160rem;
+}
+
+.franchise-carousel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.franchise-carousel__heading-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  flex: 1;
+}
+
+.franchise-carousel__heading {
+  margin: 0;
+  color: var(--fc-heading-color, inherit);
+  font-weight: 700;
+}
+
+.franchise-carousel__subheading {
+  margin: 0;
+  color: var(--fc-subheading-color, inherit);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.franchise-carousel__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.franchise-carousel__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0b2e4e;
+  cursor: pointer;
+  box-shadow: 0 0.2rem 0.8rem rgb(0 0 0 / 0.1);
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.franchise-carousel__nav-btn .svg-wrapper svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.franchise-carousel__nav-btn--prev .svg-wrapper {
+  display: flex;
+  transform: rotate(180deg);
+}
+
+.franchise-carousel__nav-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  object-fit: contain;
+  display: block;
+}
+
+.franchise-carousel__nav-btn:not(.is-disabled):hover {
+  background: var(--fc-nav-active-color, #f5a623);
+  color: #ffffff;
+}
+
+.franchise-carousel__nav-btn--next:not(.is-disabled) {
+  background: var(--fc-nav-active-color, #f5a623);
+  color: #ffffff;
+}
+
+.franchise-carousel__nav-btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.franchise-carousel__list {
+  display: flex;
+  gap: var(--fc-card-gap, 24px);
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.4rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.franchise-carousel__list::-webkit-scrollbar {
+  display: none;
+}
+
+.franchise-carousel__item {
+  display: flex;
+  flex: 0 0 calc(100% / (var(--fc-columns-mobile, 1) + 0.15));
+  scroll-snap-align: start;
+}
+
+@media screen and (min-width: 750px) {
+  .franchise-carousel__item {
+    flex-basis: calc(100% / (var(--fc-columns-desktop, 3) + 0.15));
+  }
+}
+
+.franchise-carousel__card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+  min-height: 20rem;
+  padding: 2.4rem;
+  border-radius: var(--fc-card-radius, 18px);
+  background: #ffffff;
+  box-shadow: 0 0.8rem 2rem rgb(11 46 78 / 0.08);
+}
+
+.franchise-carousel__avatar {
+  flex-shrink: 0;
+  align-self: center;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.franchise-carousel__avatar img,
+.franchise-carousel__avatar svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.franchise-carousel__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.franchise-carousel__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.franchise-carousel__position {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.franchise-carousel__name {
+  margin: 0;
+  color: var(--fc-name-color, inherit);
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.franchise-carousel__description {
+  margin: 0;
+  color: var(--fc-description-color, inherit);
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.franchise-carousel__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: auto;
+}
+
+.franchise-carousel__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.franchise-carousel__stars {
+  display: inline-flex;
+  gap: 0.1rem;
+}
+
+.franchise-carousel__star {
+  position: relative;
+  display: inline-flex;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.franchise-carousel__star svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  display: block;
+}
+
+.franchise-carousel__star-fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.franchise-carousel__reviews {
+  color: var(--fc-description-color, inherit);
+  font-size: 1.3rem;
+}
+
+.franchise-carousel__button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--fc-button-color, #f5a623);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.franchise-carousel__button .svg-wrapper svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.franchise-carousel__button:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 749px) {
+  .franchise-carousel__wrapper {
+    gap: 2.4rem;
+  }
+
+  .franchise-carousel__header {
+    align-items: center;
+  }
+
+  .franchise-carousel__heading-group {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .franchise-carousel__nav-btn {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .franchise-carousel__card {
+    padding: 1.6rem;
+    gap: 1.2rem;
+  }
+
+  .franchise-carousel__avatar {
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .franchise-carousel__nav-btn,
+  .franchise-carousel__list {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+    .franchise-carousel-template--19478828089392__custom_franchise_carousel_BexBVe {
+        padding-top: 64px;
+        padding-bottom: 2px !important;
+    }
+  }

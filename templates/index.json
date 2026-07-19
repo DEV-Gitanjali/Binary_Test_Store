@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -29,47 +38,259 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "custom_feature_collection_ErPawq": {
+      "type": "custom-feature-collection",
+      "name": "Custom Featured Slider",
+      "settings": {
+        "collection": "bestsellers",
+        "products_to_show": 8,
+        "title": "Best Sellers",
+        "subtitle": "Excellence you can trust",
+        "columns_desktop": 4,
+        "columns_mobile": "1.5",
+        "show_secondary_image": false,
+        "show_view_all": true,
+        "color_scheme": "",
+        "bg_color": "#fffcf5",
+        "bg_image": "shopify://shop_images/ZODIAC-CONSTELLATION-MAP.png",
+        "bg_image_size": "contain",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "custom_nested_slider_section_KqUrXJ": {
+      "type": "custom-nested-slider-section",
+      "blocks": {
+        "course_n7wrDE": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_DiJtXy": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_fKNxPX": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_nYNHph": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_Fwh8Ez": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_kD9V7n": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_yzpnaY": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_9PjgQT": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "step_mR6y8D": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Group_26045_2x_ea392753-1974-41e3-a7d9-1a592c564d64.png",
+            "title": "Pick a Suitable Course"
+          }
+        },
+        "step_RFXQcQ": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Group_26046_2x_84e821d2-672b-4d20-bdb2-97f9d54de9f1.png",
+            "title": "Enroll The Course"
+          }
+        },
+        "step_rUBBNU": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Group_26047_2x_9acee0c1-a45a-4e87-87aa-3930ea2e2177.png",
+            "title": "Become a Professional"
+          }
+        }
+      },
+      "block_order": [
+        "course_n7wrDE",
+        "course_DiJtXy",
+        "course_fKNxPX",
+        "course_nYNHph",
+        "course_Fwh8Ez",
+        "course_kD9V7n",
+        "course_yzpnaY",
+        "course_9PjgQT",
+        "step_mR6y8D",
+        "step_RFXQcQ",
+        "step_rUBBNU"
+      ],
+      "name": "Nested Slider Section",
+      "settings": {
+        "courses_title": "Our Courses",
+        "courses_subtitle": "Learn today, Lead tomorrow.",
+        "tab1_label": "Live Course",
+        "tab2_label": "Recorded Courses",
+        "courses_bg_color": "rgba(0,0,0,0)",
+        "how_title": "How it works",
+        "how_subtitle": "Become a professional consultant in 3 simple steps",
+        "how_bg_color": "#143a72",
+        "enquire_eyebrow": "Enquire",
+        "enquire_title": "About Course",
+        "enquire_submit": "Submit Details",
+        "enquire_gradient_end": "#f27052"
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "custom_feature_collection_ErPawq",
+    "custom_nested_slider_section_KqUrXJ"
   ]
 }

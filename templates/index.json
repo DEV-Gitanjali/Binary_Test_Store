@@ -35,6 +35,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -50,6 +51,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "collection": "all",
         "products_to_show": 8,
@@ -74,6 +76,290 @@
         "swipe_on_mobile": true,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "custom_slide_QXFfM8": {
+      "type": "custom-slide",
+      "blocks": {
+        "slide_wqFQmc": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "desktop_image": "shopify://shop_images/Group_26042_2x_255dfb16-c638-4264-a123-517ecb2a1500.png",
+            "mobile_image": "shopify://shop_images/Group_21186_2x_00b9cb55-d68e-42c9-9f02-32768bed0002.png",
+            "overlay_opacity": 20,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_6TrqHR": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "desktop_image": "shopify://shop_images/Group_26042_2x_255dfb16-c638-4264-a123-517ecb2a1500.png",
+            "mobile_image": "shopify://shop_images/Group_21186_2x_00b9cb55-d68e-42c9-9f02-32768bed0002.png",
+            "overlay_opacity": 20,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_wqFQmc",
+        "slide_6TrqHR"
+      ],
+      "name": "Custom slideshow",
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "slider_visual": "dots",
+        "enable_video_loop": false,
+        "desktop_media_width": 100,
+        "desktop_media_height": 600,
+        "mobile_media_width": 100,
+        "mobile_media_height": 200,
+        "accessibility_info": "Featured slides"
+      }
+    },
+    "custom_services_grid_7gwPR4": {
+      "type": "custom-services-grid",
+      "blocks": {
+        "service_card_eGRbVW": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/house.svg",
+            "title": "Residential Vastu",
+            "background_color": "#e4f9eb",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_i6R6MM": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/office.svg",
+            "title": "Commercial Vastu",
+            "background_color": "#f8ecd9",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_CLmdkt": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/industry.svg",
+            "title": "Industrial Vastu",
+            "background_color": "#e5e2ff",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_fXDU7x": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/numerology.svg",
+            "title": "Numerology",
+            "background_color": "#f9e4e8",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_DWgUQf": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_x0020_1.svg",
+            "title": "Gemstone",
+            "background_color": "#e3f5e4",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_Lg7fT9": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/beads.svg",
+            "title": "Rudraksha",
+            "background_color": "#ccdff6",
+            "background_gradient": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_card_eGRbVW",
+        "service_card_i6R6MM",
+        "service_card_CLmdkt",
+        "service_card_fXDU7x",
+        "service_card_DWgUQf",
+        "service_card_Lg7fT9"
+      ],
+      "name": "Services card grid",
+      "settings": {
+        "heading": "Our Services",
+        "heading_size": "h1",
+        "description": "<p>Our experts provide effective Numerology and vastu Services to the clients across the globe. Life is not a bed of roses; it is a path full of thorns. Life has a number of problems to face. Such problems can be resolved with the help of intelligence. Numerology and vastu indicates the various ways in which problems of life can be resolved. It is a science of rare powers.</p>",
+        "text_alignment": "center",
+        "columns_desktop": 6,
+        "columns_mobile": 3,
+        "card_gap": 28,
+        "card_padding": 18,
+        "card_radius": 16,
+        "heading_color": "#143f71",
+        "text_color": "#001227",
+        "font_size": 14,
+        "font_weight": "600",
+        "section_background": "",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "custom_promo_highlight_gMXNFi": {
+      "type": "custom-promo-highlight",
+      "blocks": {
+        "promo_card_3q4ttU": {
+          "type": "promo_card",
+          "settings": {
+            "image": "shopify://shop_images/Group_26043_2x_a516f8b5-a46f-4f1d-9d77-3dc6cf69c2e5.png",
+            "title": "Unlock the Secrets of Your Numbers with the",
+            "subtitle": "Numerology Calculator",
+            "background_color": "#fff1cc",
+            "background_gradient": "",
+            "border_color": "#ebd8a5",
+            "subtitle_color": "#d98e1e",
+            "link": ""
+          }
+        },
+        "promo_card_XjWCmy": {
+          "type": "promo_card",
+          "settings": {
+            "image": "shopify://shop_images/Group_26044.svg",
+            "title": "Let's Discover Your Perfect",
+            "subtitle": "Lucky Gemstone!",
+            "background_color": "#e5e0fa",
+            "background_gradient": "",
+            "border_color": "#d5c7f2",
+            "subtitle_color": "#6e4fc9",
+            "link": ""
+          }
+        },
+        "promo_card_xEVQbE": {
+          "type": "promo_card",
+          "settings": {
+            "image": "shopify://shop_images/Group_26101.svg",
+            "title": "Unveil Your Destiny with",
+            "subtitle": "Astro Kundli Insights!",
+            "background_color": "#dff3e3",
+            "background_gradient": "",
+            "border_color": "#bfe5c7",
+            "subtitle_color": "#2f8f52",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promo_card_3q4ttU",
+        "promo_card_XjWCmy",
+        "promo_card_xEVQbE"
+      ],
+      "name": "Promo highlight cards",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "show_arrow": true,
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "card_gap": 20,
+        "card_padding": 16,
+        "card_radius": 20,
+        "title_color": "#324356",
+        "title_font_size": 15,
+        "subtitle_font_weight": "700",
+        "section_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_premium_services_fcM4Wf": {
+      "type": "custom-premium-services",
+      "blocks": {
+        "premium_service_card_4g9zM6": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/numerology.svg",
+            "title": "Numerology Report",
+            "background_color": "#faf6ed",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_yQ74tF": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/g2151.svg",
+            "title": "Vastu Evaluation Report",
+            "background_color": "#faf6ed",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_H6QDni": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/x33_6.svg",
+            "title": "Astro Vastu Fortune Report",
+            "background_color": "#faf6ed",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        }
+      },
+      "block_order": [
+        "premium_service_card_4g9zM6",
+        "premium_service_card_yQ74tF",
+        "premium_service_card_H6QDni"
+      ],
+      "name": "Premium Services",
+      "settings": {
+        "heading": "Premium Services",
+        "heading_size": "h1",
+        "description": "",
+        "text_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": 2,
+        "card_gap": 8,
+        "card_padding": 16,
+        "card_radius": 12,
+        "card_width": 400,
+        "card_height": 160,
+        "heading_color": "#143f71",
+        "text_color": "#324356",
+        "font_size": 15,
+        "font_weight": "600",
+        "section_background": "",
+        "padding_top": 40,
+        "padding_horizontal": 48,
+        "padding_bottom": 56
       }
     },
     "custom_feature_collection_ErPawq": {
@@ -290,6 +576,10 @@
   "order": [
     "image_banner",
     "featured_collection",
+    "custom_slide_QXFfM8",
+    "custom_services_grid_7gwPR4",
+    "custom_promo_highlight_gMXNFi",
+    "custom_premium_services_fcM4Wf",
     "custom_feature_collection_ErPawq",
     "custom_nested_slider_section_KqUrXJ"
   ]

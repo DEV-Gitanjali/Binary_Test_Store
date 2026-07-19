@@ -1,0 +1,98 @@
+.custom-announcement-bar {
+  color: var(--custom-announcement-bar-text-color, rgb(var(--color-foreground)));
+  background-color: rgb(var(--color-background));
+}
+
+.custom-announcement-bar--border {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.custom-announcement-bar__inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+}
+
+.custom-announcement-bar__inner.page-width {
+  max-width: none;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .custom-announcement-bar__inner.page-width {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+}
+
+.custom-announcement-bar__group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--custom-announcement-bar-gap, 1.6rem);
+}
+
+.custom-announcement-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--custom-announcement-bar-font-size, 1.4rem);
+  line-height: 1.4;
+}
+
+.custom-announcement-bar__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--custom-announcement-bar-icon-size, 1.6rem);
+  height: var(--custom-announcement-bar-icon-size, 1.6rem);
+}
+
+.custom-announcement-bar__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.custom-announcement-bar__icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.custom-announcement-bar__text p {
+  margin: 0;
+}
+
+.custom-announcement-bar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: currentColor;
+  text-decoration: none;
+}
+
+.custom-announcement-bar__link:hover {
+  text-decoration: underline;
+}
+
+.custom-announcement-bar__divider {
+  width: 0.1rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+  background-color: var(--custom-announcement-bar-divider-color, rgba(var(--color-foreground), 0.2));
+}
+
+@media screen and (max-width: 749px) {
+  .custom-announcement-bar__inner {
+    justify-content: center !important;
+  }
+
+  .custom-announcement-bar__group {
+    justify-content: center;
+  }
+}

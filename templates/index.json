@@ -375,6 +375,109 @@
         "padding_horizontal": 48,
         "padding_bottom": 56
       }
+    },
+    "custom_collection_grid_LhFm7W": {
+      "type": "custom-collection-grid",
+      "blocks": {
+        "collection_card_Pj7QF7": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_21184.png",
+            "title": "Bracelets"
+          }
+        },
+        "collection_card_enCeRk": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26049_2x_3e712181-de62-4c91-9a4e-362772a37b49.png",
+            "title": "3d-Remedies"
+          }
+        },
+        "collection_card_YfhBLK": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26050.png",
+            "title": "Rudraksh"
+          }
+        },
+        "collection_card_NdXfqC": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26051.png",
+            "title": "Devta Divs"
+          }
+        },
+        "collection_card_knpQqg": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26052.png",
+            "title": "Color-Tapes"
+          }
+        },
+        "collection_card_EhkiHt": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26053_2x_55b11f45-7656-447d-b323-d0a6b99fdcb6.png",
+            "title": "Strips"
+          }
+        },
+        "collection_card_L3bmtt": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26054_2x_a93f5776-d5d8-4d00-8fe0-04cada7038c5.png",
+            "title": "Studs"
+          }
+        },
+        "collection_card_fTL4FP": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26055_2x_b88f7a74-3da9-4456-becd-4700dd919d5d.png",
+            "title": "+More Remedies"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_Pj7QF7",
+        "collection_card_enCeRk",
+        "collection_card_YfhBLK",
+        "collection_card_NdXfqC",
+        "collection_card_knpQqg",
+        "collection_card_EhkiHt",
+        "collection_card_L3bmtt",
+        "collection_card_fTL4FP"
+      ],
+      "name": "Collection grid",
+      "settings": {
+        "heading": "Remedies",
+        "heading_size": "h1",
+        "subheading": "Natural remedies for real results.",
+        "show_view_all": true,
+        "view_all_label": "View all",
+        "view_all_link": "",
+        "background_color": "#F7F1E4",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "card_gap": 20,
+        "card_radius": 14,
+        "overlay_color": "#000000",
+        "overlay_opacity": 65,
+        "title_color": "#FFFFFF",
+        "title_font_size": 18,
+        "title_font_weight": "700",
+        "heading_color": "#1E3A5F",
+        "subheading_color": "#3A7CA5",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
@@ -383,6 +486,7 @@
     "custom_slide_Rxk7wV",
     "custom_services_grid_rzXBPQ",
     "custom_promotional_1",
-    "custom_premium_services_1"
+    "custom_premium_services_1",
+    "custom_collection_grid_LhFm7W"
   ]
 }

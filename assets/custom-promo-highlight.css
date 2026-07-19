@@ -131,6 +131,7 @@ promo-highlight {
   margin: 0;
   color: var(--ph-title-color, inherit);
   font-size: var(--ph-title-font-size, 1.5rem);
+  font-weight: 600;
   line-height: 1.4;
   text-wrap: balance;
 }
@@ -139,6 +140,7 @@ promo-highlight {
   display: block;
   margin-top: 0.2rem;
   color: var(--ph-subtitle-color, inherit);
+  font-size: 1.6rem;
   font-weight: var(--ph-subtitle-font-weight, 700);
 }
 

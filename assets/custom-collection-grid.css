@@ -1,0 +1,207 @@
+collection-grid {
+  display: block;
+  position: relative;
+}
+
+.collection-grid__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  max-width: 160rem;
+}
+
+.collection-grid__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  width: 100%;
+  text-align: left;
+}
+
+.collection-grid__heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.collection-grid__heading {
+  margin: 0;
+  color: var(--cg-heading-color, inherit);
+  font-weight: 700;
+}
+
+.collection-grid__subheading {
+  margin: 0;
+  color: var(--cg-subheading-color, inherit);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.collection-grid__view-all {
+  flex-shrink: 0;
+  color: var(--cg-heading-color, inherit);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 750px) {
+  .collection-grid__header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .collection-grid__heading-group {
+    align-items: center;
+    text-align: center;
+    max-width: 60rem;
+    margin-inline: auto;
+  }
+
+  .collection-grid__view-all {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .collection-grid__subheading {
+    display: none;
+  }
+}
+
+.collection-grid__list {
+  display: grid;
+  grid-template-columns: repeat(var(--cg-columns-mobile, 2), 1fr);
+  gap: var(--cg-card-gap, 20px);
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.4rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-grid__list {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .collection-grid__list::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection-grid__list {
+    grid-template-columns: repeat(var(--cg-columns-desktop, 4), 1fr);
+  }
+}
+
+.collection-grid__item {
+  display: flex;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-grid__item {
+    flex: 0 0 44%;
+    scroll-snap-align: start;
+  }
+}
+
+.collection-grid__card {
+  width: 100%;
+  border-radius: var(--cg-card-radius, 14px);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.collection-grid__card[data-href] {
+  cursor: pointer;
+}
+
+.collection-grid__card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.8rem 1.6rem rgb(0 0 0 / 0.12);
+}
+
+.collection-grid__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--cg-card-ratio, 1 / 1);
+  background-color: rgb(0 0 0 / 0.05);
+}
+
+.collection-grid__image,
+.collection-grid__media > svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.collection-grid__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--cg-overlay-color, #000000) var(--cg-overlay-opacity, 65%), transparent) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.collection-grid__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 1.6rem;
+  color: var(--cg-title-color, #ffffff);
+  font-size: var(--cg-title-font-size, 1.8rem);
+  font-weight: var(--cg-title-font-weight, 700);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.collection-grid__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.collection-grid__title-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-grid__wrapper {
+    gap: 2rem;
+  }
+
+  .collection-grid__list {
+    gap: min(var(--cg-card-gap, 20px), 1.2rem);
+  }
+
+  .collection-grid__title {
+    padding: 1.1rem 1.2rem;
+    font-size: min(var(--cg-title-font-size, 1.8rem), 1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collection-grid__card {
+    transition: none;
+  }
+}

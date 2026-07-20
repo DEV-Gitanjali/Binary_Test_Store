@@ -745,6 +745,10 @@
         "heading": "Franchise",
         "heading_size": "h1",
         "subheading": "Talk with our experts",
+        "mobile_heading": "Consultation",
+        "show_view_all_mobile": true,
+        "view_all_label": "View all",
+        "view_all_link": "",
         "background_color": "#c8dde6",
         "show_wave": true,
         "wave_color": "#ffffff",
@@ -773,28 +777,40 @@
           "type": "stat",
           "settings": {
             "number": "99+",
-            "title": "Trusted by Million Clients"
+            "title": "Trusted by Million Clients",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
           }
         },
         "stat_n2WkTb": {
           "type": "stat",
           "settings": {
             "number": "25+",
-            "title": "Years of Experience"
+            "title": "Years of Experience",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
           }
         },
         "stat_Ry8fQd": {
           "type": "stat",
           "settings": {
             "number": "10+",
-            "title": "Types of Horoscopes"
+            "title": "Types of Horoscopes",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
           }
         },
         "stat_9mLpXe": {
           "type": "stat",
           "settings": {
             "number": "99+",
-            "title": "Qualified Astrologers"
+            "title": "Qualified Astrologers",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
           }
         }
       },
@@ -810,7 +826,35 @@
         "heading": "About Pinnacle Vastu",
         "description": "<p>Occult Sciences is a concept of healing and therapeutic energies that extends a better living style, and Pinnacle Vastu is extensively working on the remedies and practical analysis of the situation. From learning to implementing, Pinnacle Vastu offers it all. With over 60 franchises spread across India including Dubai and Australia, Pinnacle Vastu is dedicated to the services like Vastu, Numerology, and Astrology Consultancy, Courses, and Remedies. In all, Pinnacle Vastu is a one-stop destination for Occult Sciences and its application.</p>",
         "button_label": "Read More",
-        "button_link": ""
+        "button_link": "",
+        "button_bg_color": "#f2955a",
+        "button_text_color": "#ffffff",
+        "eyebrow_color": "#2f8fbf",
+        "eyebrow_font_size": 15,
+        "heading_color": "#143f71",
+        "heading_font_size": 38,
+        "heading_font_weight": "800",
+        "description_color": "#001227",
+        "description_font_size": 16,
+        "image": "shopify://shop_images/Group_26058.png",
+        "image_alt": "",
+        "image_radius": 24,
+        "image_width": 500,
+        "image_height": 560,
+        "image_height_mobile": 320,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Group_26059.png",
+        "stats_columns_desktop": 4,
+        "stats_columns_mobile": 2,
+        "column_gap": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
       }
     },
     "rich_text_MkFUzL": {

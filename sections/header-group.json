@@ -57,6 +57,7 @@
         "show_on_mobile": true,
         "show_border_bottom": true,
         "show_divider": true,
+        "text_color": "#001227",
         "divider_color": "",
         "icon_color": "",
         "icon_size": 14,
@@ -93,11 +94,10 @@
     },
     "header": {
       "type": "header",
-      "disabled": true,
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
-        "menu": "main-menu",
+        "menu": "main-mega-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,

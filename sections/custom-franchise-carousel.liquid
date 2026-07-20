@@ -48,18 +48,30 @@
   {%- endif -%}
 
   <div class="franchise-carousel__wrapper page-width">
+    {%- liquid
+      assign mobile_heading_text = section.settings.mobile_heading
+      if mobile_heading_text == blank
+        assign mobile_heading_text = section.settings.heading
+      endif
+      assign view_all_url = section.settings.view_all_link
+      if view_all_url == blank
+        assign view_all_url = routes.collections_url
+      endif
+    -%}
     {%- if section.settings.heading != blank or section.settings.subheading != blank or section.settings.show_nav_arrows -%}
       <div class="franchise-carousel__header">
         <div class="franchise-carousel__heading-group">
           {%- if section.settings.heading != blank -%}
             <h2 class="franchise-carousel__heading {{ section.settings.heading_size }}">
-              {{ section.settings.heading | escape }}
+              <span class="franchise-carousel__heading-desktop">{{ section.settings.heading | escape }}</span>
+              <span class="franchise-carousel__heading-mobile">{{ mobile_heading_text | escape }}</span>
             </h2>
           {%- endif -%}
           {%- if section.settings.subheading != blank -%}
             <p class="franchise-carousel__subheading">{{ section.settings.subheading | escape }}</p>
           {%- endif -%}
         </div>
+
         {%- if section.settings.show_nav_arrows -%}
           <div class="franchise-carousel__nav">
             <button
@@ -93,6 +105,12 @@
               {%- endif -%}
             </button>
           </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_view_all_mobile -%}
+          <a href="{{ view_all_url }}" class="franchise-carousel__view-all">
+            {{- section.settings.view_all_label | escape -}}
+          </a>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -175,6 +193,19 @@
           </li>
         {%- endfor -%}
       </ul>
+
+      {%- if section.blocks.size > 1 -%}
+        <div class="franchise-carousel__dots">
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="franchise-carousel__dot{% if forloop.first %} is-active{% endif %}"
+              data-index="{{ forloop.index0 }}"
+              aria-label="{{ 'general.slider.name' | t: default: 'Go to slide' }} {{ forloop.index }}"
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </franchise-carousel>
@@ -214,7 +245,33 @@
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Talk with our experts"
+      "default": "Talk with our experts",
+      "info": "Hidden on mobile screens"
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading",
+      "label": "Mobile heading",
+      "info": "Optional. Overrides the heading above on mobile screens only.",
+      "default": "Consultation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_mobile",
+      "label": "Show 'View all' link (mobile)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "'View all' label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "'View all' link",
+      "info": "Leave blank to link to all collections"
     },
     {
       "type": "header",
@@ -360,7 +417,7 @@
       "step": 4,
       "unit": "px",
       "label": "Top spacing",
-      "default": 64
+      "default": 48
     },
     {
       "type": "range",

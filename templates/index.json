@@ -997,6 +997,127 @@
         "margin_top_mobile": 0,
         "margin_bottom_mobile": 0
       }
+    },
+    "custom_captured_highlights_HKKkGP": {
+      "type": "custom-captured-highlights",
+      "blocks": {
+        "gallery_item_zNErpc": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_166.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#FFFFFF",
+            "card_radius": 16
+          }
+        },
+        "gallery_item_eURqdz": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_164.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#FFFFFF",
+            "card_radius": 16
+          }
+        },
+        "gallery_item_K8VUDV": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_165.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#FFFFFF",
+            "card_radius": 16
+          }
+        },
+        "gallery_item_Jhq8U9": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_165.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#FFFFFF",
+            "card_radius": 16
+          }
+        }
+      },
+      "block_order": [
+        "gallery_item_zNErpc",
+        "gallery_item_eURqdz",
+        "gallery_item_K8VUDV",
+        "gallery_item_Jhq8U9"
+      ],
+      "name": "Captured highlights",
+      "settings": {
+        "heading": "Captured Highlights",
+        "heading_font_size": 34,
+        "heading_color": "#143F71",
+        "subheading": "Captured moments of inspiration and excellence",
+        "subheading_font_size": 16,
+        "subheading_color": "#2F8FBF",
+        "background_color": "#FFFFFF",
+        "background_image": "shopify://shop_images/Group_26057.png",
+        "enable_tabs": true,
+        "tab_photo_label": "Photo",
+        "tab_video_label": "Video",
+        "tab_active_bg": "#F2955A",
+        "tab_active_text": "#FFFFFF",
+        "tab_inactive_bg": "#F6EEEB",
+        "tab_inactive_text": "#001227",
+        "tab_radius": 4,
+        "tab_spacing": 6,
+        "enable_slider": true,
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "slide_gap": 24,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "infinite_loop": true,
+        "show_pagination": true,
+        "show_nav_arrows": true,
+        "arrow_size": 40,
+        "arrow_color": "#0B2E4E",
+        "arrow_bg_color": "#FFFFFF",
+        "arrow_radius": 50,
+        "padding_top": 28,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -1012,6 +1133,7 @@
     "custom_franchise_carousel_BexBVe",
     "custom_about_section_qA7vLp",
     "rich_text_MkFUzL",
-    "custom_testimonials_section_Vn8Rqk"
+    "custom_testimonials_section_Vn8Rqk",
+    "custom_captured_highlights_HKKkGP"
   ]
 }

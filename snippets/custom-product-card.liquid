@@ -1,0 +1,450 @@
+{% comment %}
+  Renders a custom-designed product card that matches the Figma design.
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - section_id: {String} The ID of the section that contains this card
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: true (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - skip_styles: {Boolean} Don't include component styles. Useful when rendering multiple product cards in a loop. Default: false (optional)
+
+  Usage:
+  {% render 'custom-product-card', card_product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- unless skip_styles -%}
+  <style>
+    .custom-card-wrapper {
+      height: 100%;
+      font-family: inherit;
+    }
+
+    .custom-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border: 1px solid #ECE3D0;
+      border-radius: 18px;
+      padding: 12px;
+      height: 100%;
+      box-sizing: border-box;
+      transition: box-shadow 0.25s ease
+      , transform 0.25s ease;
+      overflow: hidden;
+    }
+    .custom-card:hover {
+      box-shadow: 0 10px 28px rgba(30, 41, 59, 0.08);
+    }
+
+    .custom-card__media {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #F1F1F1;
+      aspect-ratio: 1 / 1;
+      text-decoration: none;
+    }
+
+    .custom-card__badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      background: #F27052;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 9px 22px 9px 16px;
+      border-top-left-radius: 17px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 999px;
+      border-bottom-left-radius: 0;
+      box-shadow: 0 6px 14px rgba(242, 112, 82, 0.3);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .custom-card__badge--soldout {
+      background: #6B7280;
+      box-shadow: 0 6px 14px rgba(107, 114, 128, 0.3);
+    }
+
+    .custom-card__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+    .custom-card__img--secondary {
+      opacity: 0;
+    }
+    .custom-card--hover-swap:hover .custom-card__img--primary {
+      opacity: 0;
+    }
+    .custom-card--hover-swap:hover .custom-card__img--secondary {
+      opacity: 1;
+    }
+    .custom-card__img--placeholder {
+      padding: 15%;
+      fill: #d9d9d9;
+    }
+
+    .custom-card__body {
+      padding: 14px 6px 6px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 0;
+    }
+
+    .custom-card__title,
+    .custom-card__title:visited {
+      color: #1F3B7A;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.3;
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin: 0;
+      word-break: break-word;
+    }
+    .custom-card__title:hover {
+      text-decoration: underline;
+    }
+
+    .custom-card__price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .custom-card__price {
+      color: #111111;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .custom-card__compare {
+      color: #9AA0A6;
+      text-decoration: line-through;
+      font-size: 13px;
+    }
+
+    .custom-card__rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-right: 52px;
+      min-height: 24px;
+    }
+    .custom-card__stars {
+      --rating-max: 5;
+      --rating: 5;
+      display: inline-block;
+      position: relative;
+      color: #E5E1D6;
+      font-size: 13px;
+      letter-spacing: 2px;
+      line-height: 1;
+      font-family: Arial
+      , sans-serif;
+    }
+    .custom-card__stars::before {
+      content: "\2605\2605\2605\2605\2605";
+    }
+    .custom-card__stars::after {
+      content: "\2605\2605\2605\2605\2605";
+      position: absolute;
+      inset: 0;
+      color: #F5A623;
+      overflow: hidden;
+      width: calc(var(--rating) / var(--rating-max) * 100%);
+    }
+    .custom-card__review-count {
+      color: #7B7B7B;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .custom-card__cta {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      margin: 0;
+    }
+    .custom-card__cta-form {
+      margin: 0;
+    }
+    .custom-card__cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: #F27052;
+      color: #ffffff;
+      border: none;
+      border-radius: 17px;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1;
+      box-shadow: 0 6px 14px rgba(242, 112, 82, 0.28);
+      transition: padding 0.25s ease
+      , gap 0.2s ease
+      , box-shadow 0.2s ease
+      , background 0.2s ease;
+    }
+    .custom-card__cta-btn:hover {
+      background: #E86042;
+    }
+    .custom-card__cta-btn[disabled] {
+      background: #C9C9C9;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    .custom-card__cta-text {
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      opacity: 0;
+      transition: max-width 0.25s ease
+      , opacity 0.2s ease;
+    }
+    .custom-card:hover .custom-card__cta-btn {
+      padding: 10px 16px 10px 18px;
+      gap: 8px;
+    }
+    .custom-card:hover .custom-card__cta-text {
+      max-width: 140px;
+      opacity: 1;
+    }
+    .custom-card__cta-icon {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+    .custom-card__cta-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .custom-card__cta-btn .loading__spinner {
+      display: none;
+    }
+    .custom-card__cta-btn.loading .loading__spinner {
+      display: block;
+    }
+    .custom-card__cta-btn.loading .custom-card__cta-icon {
+      display: none;
+    }
+
+    .custom-card__cta-btn .sold-out-message {
+      display: none;
+    }
+
+    @media (max-width: 749px) {
+      .custom-card {
+        padding: 10px;
+        border-radius: 14px;
+      }
+      .custom-card__body {
+        padding: 12px 4px 4px;
+        gap: 5px;
+      }
+      .custom-card__cta {
+        right: 10px;
+        bottom: 10px;
+      }
+      .custom-card__cta-btn {
+        padding: 8px;
+      }
+      .custom-card__cta-icon {
+        width: 16px;
+        height: 16px;
+      }
+      .custom-card__title {
+        font-size: 13px;
+        line-height: 1.25;
+      }
+      .custom-card__price {
+        font-size: 14px;
+      }
+      .custom-card__compare {
+        font-size: 12px;
+      }
+      .custom-card__review-count {
+        font-size: 11px;
+      }
+      .custom-card__rating {
+        padding-right: 42px;
+        gap: 6px;
+      }
+      .custom-card__badge {
+        top: 0;
+        font-size: 11px;
+        padding: 7px 18px 7px 12px;
+        border-top-left-radius: 13px;
+      }
+      /* No hover expand on mobile — keep CTA compact */
+      .custom-card:hover .custom-card__cta-btn {
+        padding: 8px;
+        gap: 0;
+      }
+      .custom-card:hover .custom-card__cta-text {
+        max-width: 0;
+        opacity: 0;
+      }
+    }
+  </style>
+{%- endunless -%}
+
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign form_id = 'custom-card-form-' | append: section_id | append: '-' | append: card_product.id
+    assign variant = card_product.selected_or_first_available_variant
+    assign rating_count = card_product.metafields.reviews.rating_count.value | default: 0
+    assign rating_value = card_product.metafields.reviews.rating.value.rating | default: 5
+    assign rating_max = card_product.metafields.reviews.rating.value.scale_max | default: 5
+  -%}
+
+  {%- assign has_hover_swap = false -%}
+  {%- if show_secondary_image != false and card_product.media[1] -%}
+    {%- assign has_hover_swap = true -%}
+  {%- endif -%}
+
+  <div class="custom-card-wrapper">
+    <div class="custom-card{% if has_hover_swap %} custom-card--hover-swap{% endif %}">
+      {%- if card_product.available == false -%}
+        <span class="custom-card__badge custom-card__badge--soldout">
+          {{- 'products.product.sold_out' | t -}}
+        </span>
+      {%- elsif card_product.compare_at_price > card_product.price -%}
+        {%- assign discount_percent = card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round -%}
+        <span class="custom-card__badge">{{ discount_percent }}% OFF</span>
+      {%- endif -%}
+
+      <a
+        href="{{ card_product.url }}"
+        class="custom-card__media"
+        aria-label="{{ card_product.title | escape }}">
+        {%- if card_product.featured_media -%}
+          <img
+            class="custom-card__img custom-card__img--primary"
+            srcset="{%- if card_product.featured_media.width >= 200 -%}{{ card_product.featured_media | image_url: width: 200 }} 200w,{%- endif -%}{%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}{%- if card_product.featured_media.width >= 540 -%}{{ card_product.featured_media | image_url: width: 540 }} 540w,{%- endif -%}{%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}{{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w"
+            src="{{ card_product.featured_media | image_url: width: 540 }}"
+            sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+            alt="{{ card_product.featured_media.alt | escape }}"
+            width="{{ card_product.featured_media.width }}"
+            height="{{ card_product.featured_media.height }}"
+            {% unless lazy_load == false %}
+            loading="lazy"
+            {% endunless %}>
+          {%- if show_secondary_image != false and card_product.media[1] -%}
+            <img
+              class="custom-card__img custom-card__img--secondary"
+              srcset="{%- if card_product.media[1].width >= 200 -%}{{ card_product.media[1] | image_url: width: 200 }} 200w,{%- endif -%}{%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}{%- if card_product.media[1].width >= 540 -%}{{ card_product.media[1] | image_url: width: 540 }} 540w,{%- endif -%}{%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}{{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w"
+              src="{{ card_product.media[1] | image_url: width: 540 }}"
+              sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+              alt="{{ card_product.media[1].alt | escape }}"
+              width="{{ card_product.media[1].width }}"
+              height="{{ card_product.media[1].height }}"
+              loading="lazy">
+          {%- endif -%}
+        {%- else -%}
+          {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'custom-card__img custom-card__img--placeholder' }}
+        {%- endif -%}
+      </a>
+
+      <div class="custom-card__body">
+        <a href="{{ card_product.url }}" class="custom-card__title">{{- card_product.title | escape -}}</a>
+        <div class="custom-card__price-row">
+          <span class="custom-card__price">{{ card_product.price | money }}</span>
+          {%- if card_product.compare_at_price > card_product.price -%}
+            <span class="custom-card__compare">{{ card_product.compare_at_price | money }}</span>
+          {%- endif -%}
+        </div>
+        <div
+          class="custom-card__rating"
+          role="img"
+          aria-label="{{ rating_value }} out of {{ rating_max }} stars, {{ rating_count }} reviews">
+          <span
+            class="custom-card__stars"
+            style="--rating: {{ rating_value }}; --rating-max: {{ rating_max }};"
+            aria-hidden="true"></span>
+          <span class="custom-card__review-count">{{ rating_count }} review</span>
+        </div>
+      </div>
+
+      <div class="custom-card__cta">
+        <product-form data-section-id="{{ section_id }}">
+          {%- form 'product'
+            , card_product
+            , id: form_id
+            , class: 'custom-card__cta-form'
+            , novalidate: 'novalidate'
+            , data-type: 'add-to-cart-form' -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ variant.id }}"
+              class="product-variant-id"
+              {% if variant.available == false %}
+              disabled{% endif %}>
+            <button
+              id="{{ form_id }}-submit"
+              type="submit"
+              name="add"
+              class="custom-card__cta-btn"
+              aria-label="{% if variant.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}: {{ card_product.title | escape }}"
+              aria-live="polite"
+              data-sold-out-message="true"
+              {% if variant.available == false %}
+              disabled{% endif %}>
+              <span class="custom-card__cta-text">
+                {%- if variant.available -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}{%- endif -%}
+              </span>
+              <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
+              <span class="custom-card__cta-icon" aria-hidden="true">
+                {{- 'icon-custom-cart.svg' | inline_asset_content -}}
+              </span>
+              {%- render 'loading-spinner' -%}
+            </button>
+          {%- endform -%}
+        </product-form>
+      </div>
+    </div>
+  </div>
+{%- else -%}
+  <div class="custom-card-wrapper">
+    <div class="custom-card">
+      <div class="custom-card__media">
+        {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'custom-card__img custom-card__img--placeholder' }}
+      </div>
+      <div class="custom-card__body">
+        <span class="custom-card__title">{{ 'onboarding.product_title' | t }}</span>
+        <div class="custom-card__price-row">
+          <span class="custom-card__price">$0.00</span>
+        </div>
+        <div class="custom-card__rating" aria-hidden="true">
+          <span class="custom-card__stars" style="--rating: 5; --rating-max: 5;"></span>
+          <span class="custom-card__review-count">0 review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

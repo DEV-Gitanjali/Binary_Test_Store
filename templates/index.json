@@ -462,7 +462,7 @@
         "show_view_all": true,
         "view_all_label": "View all",
         "view_all_link": "",
-        "background_color": "#F7F1E4",
+        "background_color": "#f7f3ed",
         "image_ratio": "square",
         "columns_desktop": 4,
         "columns_mobile": 2,
@@ -470,13 +470,137 @@
         "card_radius": 14,
         "overlay_color": "#000000",
         "overlay_opacity": 65,
-        "title_color": "#FFFFFF",
+        "title_color": "#ffffff",
         "title_font_size": 18,
         "title_font_weight": "700",
-        "heading_color": "#1E3A5F",
-        "subheading_color": "#3A7CA5",
+        "heading_color": "#1e3a5f",
+        "subheading_color": "#3a7ca5",
         "padding_top": 48,
         "padding_bottom": 48
+      }
+    },
+    "custom_franchise_carousel_BexBVe": {
+      "type": "custom-franchise-carousel",
+      "blocks": {
+        "franchise_card_bwj3Xg": {
+          "type": "franchise_card",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_7298.png",
+            "position": "Acharya",
+            "position_color": "#f5a623",
+            "name": "Shreni Rajbhandary",
+            "description": "Services : Residential Vastu, Industrial Vastu, Gemstone",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        },
+        "franchise_card_4KAe6T": {
+          "type": "franchise_card",
+          "settings": {
+            "image": "shopify://shop_images/Image_132.png",
+            "position": "Core",
+            "position_color": "#2f8fbf",
+            "name": "Deepika",
+            "description": "Services : Commercial Vastu, Numerology, Rudraksha",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        },
+        "franchise_card_KxPHWx": {
+          "type": "franchise_card",
+          "settings": {
+            "image": "shopify://shop_images/Image_133.png",
+            "position": "Franchise",
+            "position_color": "#2f8fbf",
+            "name": "Payal Gupta",
+            "description": "Services : Industrial Vastu, Gemstone",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        },
+        "franchise_card_tCEBET": {
+          "type": "franchise_card",
+          "settings": {
+            "position": "Franchise",
+            "position_color": "#2f8fbf",
+            "name": "Priya Sharma",
+            "description": "Services : Numerology, Rudraksha, Gemstone",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "franchise_card_bwj3Xg",
+        "franchise_card_4KAe6T",
+        "franchise_card_KxPHWx",
+        "franchise_card_tCEBET"
+      ],
+      "name": "Franchise carousel",
+      "settings": {
+        "heading": "Franchise",
+        "heading_size": "h1",
+        "subheading": "Talk with our experts",
+        "background_color": "#c8dde6",
+        "show_wave": true,
+        "wave_color": "#ffffff",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "card_gap": 24,
+        "card_radius": 18,
+        "show_nav_arrows": true,
+        "nav_active_color": "#f5a623",
+        "prev_icon": "shopify://shop_images/8666777_chevron_right_arrow_icon_4.svg",
+        "next_icon": "shopify://shop_images/8666777_chevron_right_arrow_icon_5.svg",
+        "heading_color": "#0b2e4e",
+        "subheading_color": "#2f8fbf",
+        "name_color": "#0b2e4e",
+        "description_color": "#55677a",
+        "rating_color": "#2f8fbf",
+        "button_color": "#f5a623",
+        "padding_top": 64,
+        "padding_bottom": 160
+      }
+    },
+    "rich_text_MkFUzL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_H8mA6P": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_MQ7p8m": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_H8mA6P",
+        "text_MQ7p8m"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 76,
+        "padding_bottom": 52
       }
     }
   },
@@ -487,6 +611,8 @@
     "custom_services_grid_rzXBPQ",
     "custom_promotional_1",
     "custom_premium_services_1",
-    "custom_collection_grid_LhFm7W"
+    "custom_collection_grid_LhFm7W",
+    "custom_franchise_carousel_BexBVe",
+    "rich_text_MkFUzL"
   ]
 }

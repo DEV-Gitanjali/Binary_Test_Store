@@ -1,0 +1,593 @@
+{{ 'custom-testimonials-section.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-testimonials-section.js' | asset_url }}" defer="defer"></script>
+
+{%- capture star_outline -%}
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#D8DDE3"><path d="M12 2.5l2.9 6.4 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.3 1.5-6.8L2.2 9.6l6.9-.7L12 2.5z"/></svg>
+{%- endcapture -%}
+{%- capture star_filled -%}
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: var(--ts-star-color, #F5A623);"><path d="M12 2.5l2.9 6.4 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.3 1.5-6.8L2.2 9.6l6.9-.7L12 2.5z"/></svg>
+{%- endcapture -%}
+
+{%- style -%}
+  .testimonials-carousel-{{ section.id }} {
+    --ts-heading-color: {{ section.settings.heading_color }};
+    --ts-subheading-color: {{ section.settings.subheading_color }};
+    --ts-heading-font-size-mobile: {{ section.settings.heading_font_size | times: 0.7 | round: 0 }}px;
+    --ts-heading-font-size: {{ section.settings.heading_font_size }}px;
+    --ts-subheading-font-size: {{ section.settings.subheading_font_size }}px;
+    --ts-slides-desktop: {{ section.settings.slides_desktop }};
+    --ts-slides-tablet: {{ section.settings.slides_tablet }};
+    --ts-slides-mobile: {{ section.settings.slides_mobile }};
+    --ts-slide-gap: {{ section.settings.slide_gap }}px;
+    --ts-arrow-size: {{ section.settings.arrow_size }}px;
+    --ts-arrow-color: {{ section.settings.arrow_color }};
+    --ts-arrow-bg-color: {{ section.settings.arrow_bg_color }};
+    --ts-arrow-radius: {{ section.settings.arrow_radius }}%;
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    margin-top: {{ section.settings.margin_top_mobile }}px;
+    margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    {%- if section.settings.background_image != blank %}
+    background-image: url({{ section.settings.background_image | image_url: width: 1920 }});
+    background-size: cover;
+    background-position: center;
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    .testimonials-carousel-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<testimonials-carousel
+  id="TestimonialsCarousel-{{ section.id }}"
+  class="testimonials-carousel testimonials-carousel-{{ section.id }}"
+  data-infinite="{{ section.settings.infinite_loop }}"
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-autoplay-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+>
+  {%- if section.settings.decorative_image != blank -%}
+    <div class="testimonials-carousel__decorative" aria-hidden="true">
+      {{ section.settings.decorative_image | image_url: width: 300 | image_tag: loading: 'lazy', widths: '150, 200, 300' }}
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.show_nav_arrows -%}
+    <div class="testimonials-carousel__nav">
+      <button
+        type="button"
+        class="testimonials-carousel__nav-btn testimonials-carousel__nav-btn--prev"
+        aria-label="{{ 'general.slider.previous_slide' | t: default: 'Previous' }}"
+      >
+        {%- if section.settings.prev_icon != blank -%}
+          {{
+            section.settings.prev_icon
+            | image_url: width: 64
+            | image_tag: loading: 'lazy', widths: '32, 48, 64', class: 'testimonials-carousel__nav-icon'
+          }}
+        {%- else -%}
+          <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+        {%- endif -%}
+      </button>
+      <button
+        type="button"
+        class="testimonials-carousel__nav-btn testimonials-carousel__nav-btn--next"
+        aria-label="{{ 'general.slider.next_slide' | t: default: 'Next' }}"
+      >
+        {%- if section.settings.next_icon != blank -%}
+          {{
+            section.settings.next_icon
+            | image_url: width: 64
+            | image_tag: loading: 'lazy', widths: '32, 48, 64', class: 'testimonials-carousel__nav-icon'
+          }}
+        {%- else -%}
+          <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+        {%- endif -%}
+      </button>
+    </div>
+  {%- endif -%}
+
+  <div class="testimonials-carousel__wrapper page-width">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="testimonials-carousel__header">
+        <div class="testimonials-carousel__heading-group">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="testimonials-carousel__heading">{{ section.settings.heading | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subheading != blank -%}
+            <p class="testimonials-carousel__subheading">{{ section.settings.subheading | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul
+        class="testimonials-carousel__list{% unless section.settings.enable_slider %} testimonials-carousel__list--static{% endunless %}"
+        role="list"
+      >
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign full_stars = block.settings.rating | floor
+            assign has_half = false
+            assign remainder = block.settings.rating | minus: full_stars
+            if remainder >= 0.5
+              assign has_half = true
+            endif
+            assign half_index = full_stars | plus: 1
+          -%}
+          <li class="testimonials-carousel__item" {{ block.shopify_attributes }}>
+            <div
+              class="testimonials-carousel__card{% if block.settings.card_shadow %} testimonials-carousel__card--shadow{% endif %}"
+              style="--ts-card-bg: {{ block.settings.card_bg_color }}; --ts-card-radius: {{ block.settings.card_radius }}px; --ts-name-color: {{ block.settings.name_color }}; --ts-text-color: {{ block.settings.text_color }}; --ts-star-color: {{ block.settings.star_color }};"
+            >
+              <div class="testimonials-carousel__avatar">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 200
+                    | image_tag: loading: 'lazy', widths: '80, 120, 200', alt: block.settings.name
+                  }}
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'testimonials-carousel__avatar-placeholder' }}
+                {%- endif -%}
+              </div>
+
+              <p class="testimonials-carousel__name">{{ block.settings.name | escape }}</p>
+
+              {%- if block.settings.designation != blank -%}
+                <p class="testimonials-carousel__designation">{{ block.settings.designation | escape }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.rating > 0 -%}
+                <span class="testimonials-carousel__stars">
+                  {%- for i in (1..5) -%}
+                    <span class="testimonials-carousel__star">
+                      {{- star_outline -}}
+                      {%- if i <= full_stars -%}
+                        <span class="testimonials-carousel__star-fill" style="width: 100%;">{{ star_filled }}</span>
+                      {%- elsif has_half and i == half_index -%}
+                        <span class="testimonials-carousel__star-fill" style="width: 50%;">{{ star_filled }}</span>
+                      {%- endif -%}
+                    </span>
+                  {%- endfor -%}
+                </span>
+              {%- endif -%}
+
+              {%- if block.settings.text != blank -%}
+                <div class="testimonials-carousel__text rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.enable_slider and section.settings.show_pagination and section.blocks.size > 1 -%}
+        <div class="testimonials-carousel__dots">
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="testimonials-carousel__dot{% if forloop.first %} is-active{% endif %}"
+              data-index="{{ forloop.index0 }}"
+              aria-label="{{ 'general.slider.name' | t: default: 'Go to slide' }} {{ forloop.index }}"
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</testimonials-carousel>
+
+{% schema %}
+{
+  "name": "Testimonials carousel",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 16,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 20,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 34
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#143F71"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "What people are saying about us."
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#2F8FBF"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FDF6EA"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "decorative_image",
+      "label": "Decorative image",
+      "info": "Optional. Displays behind the top-left corner of the section."
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable slider",
+      "info": "When disabled, cards wrap onto multiple rows instead of scrolling.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slides_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Slides to show (desktop)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "slides_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Slides to show (tablet)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "slides_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Slides to show (mobile)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "slide_gap",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Space between slides",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay speed",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_loop",
+      "label": "Enable infinite loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "min": 28,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "label": "Arrow size",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow icon color",
+      "default": "#0B2E4E"
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "arrow_radius",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Arrow border radius",
+      "default": 50
+    },
+    {
+      "type": "image_picker",
+      "id": "prev_icon",
+      "label": "Previous arrow icon",
+      "info": "Optional. Replaces the default caret icon."
+    },
+    {
+      "type": "image_picker",
+      "id": "next_icon",
+      "label": "Next arrow icon",
+      "info": "Optional. Replaces the default caret icon."
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin (desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin (desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin (mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin (mobile)",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial_card",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "Full Name"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Designation / location",
+          "info": "Optional"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 0.5,
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Testimonial text",
+          "default": "<p>Share what this customer said about your business.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Card style"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card background color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "card_radius",
+          "min": 0,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "label": "Card border radius",
+          "default": 18
+        },
+        {
+          "type": "checkbox",
+          "id": "card_shadow",
+          "label": "Show card shadow",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "name_color",
+          "label": "Name color",
+          "default": "#143F71"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Review text color",
+          "default": "#3A4B5C"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star color",
+          "default": "#F5A623"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials carousel",
+      "blocks": [
+        {
+          "type": "testimonial_card",
+          "settings": {
+            "name": "Krishnaveni Ji",
+            "rating": 5,
+            "text": "<p>Am really grateful to be a part of the pinnacle vastu .it gives immense opportunity for everyone associated with it.its an amazing experience working with this organisation! Vastu products are of high quality &value. Everything is done very professionally</p>"
+          }
+        },
+        {
+          "type": "testimonial_card",
+          "settings": {
+            "name": "Payal",
+            "rating": 5,
+            "text": "<p>My overall experience with pinnacle vastu is really amazing. Truly professional and upto the mark services are really appreciable.Vastu remedies are authentic and result oriented .I highly recommend PINNACLE VASTU CONSULTANTS</p>"
+          }
+        },
+        {
+          "type": "testimonial_card",
+          "settings": {
+            "name": "Neeraj",
+            "rating": 5,
+            "text": "<p>I am feeling proud to be the part of Pinnacle Vastu. Pinnacle Vastu is not only a brand.. It the best way for everyone to enlighten their lives. This brand gives immense opportunities.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

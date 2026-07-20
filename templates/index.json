@@ -889,6 +889,114 @@
         "padding_top": 76,
         "padding_bottom": 52
       }
+    },
+    "custom_testimonials_section_Vn8Rqk": {
+      "type": "custom-testimonials-section",
+      "blocks": {
+        "testimonial_kR4mWp": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788.png",
+            "name": "Krishnaveni Ji",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>Am really grateful to be a part of the pinnacle vastu .it gives immense opportunity for everyone associated with it.its an amazing experience working with this organisation! Vastu products are of high quality &value. Everything is done very professionally</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        },
+        "testimonial_dT7yLb": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788_6b97be00-2b32-47b9-9295-7929373eba98.png",
+            "name": "Payal",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>My overall experience with pinnacle vastu is really amazing. Truly professional and upto the mark services are really appreciable.Vastu remedies are authentic and result oriented .I highly recommend PINNACLE VASTU CONSULTANTS</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        },
+        "testimonial_hN2sQx": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788.png",
+            "name": "Neeraj",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>I am feeling proud to be the part of Pinnacle Vastu. Pinnacle Vastu is not only a brand.. It the best way for everyone to enlighten their lives. This brand gives immense opportunities.</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        },
+        "testimonial_card_ccneqx": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788_6b97be00-2b32-47b9-9295-7929373eba98.png",
+            "name": "Neeraj",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>I am feeling proud to be the part of Pinnacle Vastu. Pinnacle Vastu is not only a brand.. It the best way for everyone to enlighten their lives. This brand gives immense opportunities.</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_kR4mWp",
+        "testimonial_dT7yLb",
+        "testimonial_hN2sQx",
+        "testimonial_card_ccneqx"
+      ],
+      "name": "Testimonials carousel",
+      "settings": {
+        "heading": "Testimonials",
+        "heading_font_size": 34,
+        "heading_color": "#143f71",
+        "subheading": "What people are saying about us.",
+        "subheading_font_size": 16,
+        "subheading_color": "#2f8fbf",
+        "background_color": "#fdf6ea",
+        "background_image": "shopify://shop_images/Group_26057.png",
+        "enable_slider": true,
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "slide_gap": 24,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "infinite_loop": true,
+        "show_pagination": true,
+        "show_nav_arrows": true,
+        "arrow_size": 40,
+        "arrow_color": "#0b2e4e",
+        "arrow_bg_color": "#ffffff",
+        "arrow_radius": 50,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -903,6 +1011,7 @@
     "custom_collection_grid_LhFm7W",
     "custom_franchise_carousel_BexBVe",
     "custom_about_section_qA7vLp",
-    "rich_text_MkFUzL"
+    "rich_text_MkFUzL",
+    "custom_testimonials_section_Vn8Rqk"
   ]
 }

@@ -766,6 +766,53 @@
         "padding_bottom": 160
       }
     },
+    "custom_about_section_qA7vLp": {
+      "type": "custom-about-section",
+      "blocks": {
+        "stat_h4mRxT": {
+          "type": "stat",
+          "settings": {
+            "number": "99+",
+            "title": "Trusted by Million Clients"
+          }
+        },
+        "stat_n2WkTb": {
+          "type": "stat",
+          "settings": {
+            "number": "25+",
+            "title": "Years of Experience"
+          }
+        },
+        "stat_Ry8fQd": {
+          "type": "stat",
+          "settings": {
+            "number": "10+",
+            "title": "Types of Horoscopes"
+          }
+        },
+        "stat_9mLpXe": {
+          "type": "stat",
+          "settings": {
+            "number": "99+",
+            "title": "Qualified Astrologers"
+          }
+        }
+      },
+      "block_order": [
+        "stat_h4mRxT",
+        "stat_n2WkTb",
+        "stat_Ry8fQd",
+        "stat_9mLpXe"
+      ],
+      "name": "About section",
+      "settings": {
+        "eyebrow": "Since 2010",
+        "heading": "About Pinnacle Vastu",
+        "description": "<p>Occult Sciences is a concept of healing and therapeutic energies that extends a better living style, and Pinnacle Vastu is extensively working on the remedies and practical analysis of the situation. From learning to implementing, Pinnacle Vastu offers it all. With over 60 franchises spread across India including Dubai and Australia, Pinnacle Vastu is dedicated to the services like Vastu, Numerology, and Astrology Consultancy, Courses, and Remedies. In all, Pinnacle Vastu is a one-stop destination for Occult Sciences and its application.</p>",
+        "button_label": "Read More",
+        "button_link": ""
+      }
+    },
     "rich_text_MkFUzL": {
       "type": "rich-text",
       "blocks": {
@@ -811,6 +858,7 @@
     "custom_nested_slider_section_KqUrXJ",
     "custom_collection_grid_LhFm7W",
     "custom_franchise_carousel_BexBVe",
+    "custom_about_section_qA7vLp",
     "rich_text_MkFUzL"
   ]
 }

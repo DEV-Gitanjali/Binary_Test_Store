@@ -1,0 +1,500 @@
+{{ 'custom-about-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .about-section-{{ section.id }} {
+    --as-column-gap: {{ section.settings.column_gap }}px;
+    --as-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --as-eyebrow-font-size-mobile: {{ section.settings.eyebrow_font_size | times: 0.85 | round: 0 }}px;
+    --as-eyebrow-font-size: {{ section.settings.eyebrow_font_size }}px;
+    --as-heading-color: {{ section.settings.heading_color }};
+    --as-heading-font-weight: {{ section.settings.heading_font_weight }};
+    --as-heading-font-size-mobile: {{ section.settings.heading_font_size | times: 0.7 | round: 0 }}px;
+    --as-heading-font-size: {{ section.settings.heading_font_size }}px;
+    --as-description-color: {{ section.settings.description_color }};
+    --as-description-font-size-mobile: {{ section.settings.description_font_size | times: 0.9 | round: 0 }}px;
+    --as-description-font-size: {{ section.settings.description_font_size }}px;
+    --as-button-bg-color: {{ section.settings.button_bg_color }};
+    --as-button-text-color: {{ section.settings.button_text_color }};
+    --as-stats-columns-desktop: {{ section.settings.stats_columns_desktop }};
+    --as-stats-columns-mobile: {{ section.settings.stats_columns_mobile }};
+    --as-image-radius: {{ section.settings.image_radius }}px;
+    --as-image-width: {{ section.settings.image_width }}px;
+    --as-image-height: {{ section.settings.image_height }}px;
+    --as-image-height-mobile: {{ section.settings.image_height_mobile }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    margin-top: {{ section.settings.margin_top_mobile }}px;
+    margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    {%- if section.settings.background_color != blank %}
+    background-color: {{ section.settings.background_color }};
+    {%- endif %}
+    {%- if section.settings.background_image != blank %}
+    background-image: url({{ section.settings.background_image | image_url: width: 1920 }});
+    background-size: cover;
+    background-position: center;
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    .about-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="about-section about-section-{{ section.id }}">
+  <div class="about-section__wrapper page-width">
+    <div class="about-section__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="about-section__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="about-section__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <div class="about-section__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="about-section__button"
+        >
+          {{- section.settings.button_label | escape -}}
+        </a>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="about-section__stats">
+          {%- for block in section.blocks -%}
+            <div
+              class="about-section__stat"
+              style="--as-stat-circle-color: {{ block.settings.circle_color }}; --as-stat-number-color: {{ block.settings.number_color }}; --as-stat-title-color: {{ block.settings.title_color }};"
+              {{ block.shopify_attributes }}
+            >
+              <div class="about-section__stat-circle">
+                <p class="about-section__stat-number">{{ block.settings.number | escape }}</p>
+              </div>
+              <p class="about-section__stat-title">{{ block.settings.title | escape }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="about-section__media">
+      {%- if section.settings.decorative_image != blank -%}
+        <div class="about-section__decorative" aria-hidden="true">
+          {{
+            section.settings.decorative_image
+            | image_url: width: 400
+            | image_tag: loading: 'lazy', widths: '150, 250, 400'
+          }}
+        </div>
+      {%- endif -%}
+
+      <div class="about-section__image-wrap">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1200
+            | image_tag:
+              loading: 'lazy',
+              widths: '400, 600, 900, 1200',
+              alt: section.settings.image_alt | default: section.settings.heading | escape
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small top text",
+      "default": "Since 2010"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "About Pinnacle Vastu"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Occult Sciences is a concept of healing and therapeutic energies that extends a better living style, and Pinnacle Vastu is extensively working on the remedies and practical analysis of the situation.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Read More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#F2955A"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Small top text color",
+      "default": "#2F8FBF"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Small top text size",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#143F71"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 20,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 38
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading font weight",
+      "options": [
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "800"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#3A4B5C"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Right image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 240,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Image width (desktop)",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 240,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Image height (desktop)",
+      "default": 560
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "min": 180,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Image height (mobile)",
+      "default": 320
+    },
+    {
+      "type": "header",
+      "content": "Decorative image"
+    },
+    {
+      "type": "image_picker",
+      "id": "decorative_image",
+      "label": "Decorative side image",
+      "info": "Optional. Displays behind the top-right corner of the main image."
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Statistics layout"
+    },
+    {
+      "type": "range",
+      "id": "stats_columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "stats_columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns on mobile",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between columns (desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin (desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin (desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin (mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin (mobile)",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "99+"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Trusted by Million Clients"
+        },
+        {
+          "type": "color",
+          "id": "circle_color",
+          "label": "Circle border color",
+          "default": "#8ED2F5"
+        },
+        {
+          "type": "color",
+          "id": "number_color",
+          "label": "Number color",
+          "default": "#4FB6E8"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#161616"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About section",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": { "number": "99+", "title": "Trusted by Million Clients" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": "25+", "title": "Years of Experience" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": "10+", "title": "Types of Horoscopes" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": "99+", "title": "Qualified Astrologers" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,213 @@
+.about-section__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  max-width: 100%;
+  margin-left: 4rem;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .about-section__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--as-column-gap, 4.8rem);
+  }
+}
+
+.about-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.about-section__eyebrow {
+  margin: 0;
+  color: var(--as-eyebrow-color);
+  font-size: var(--as-eyebrow-font-size-mobile);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.about-section__heading {
+  margin: 0;
+  color: var(--as-heading-color);
+  font-size: var(--as-heading-font-size-mobile);
+  font-weight: var(--as-heading-font-weight);
+  line-height: 1.15;
+}
+
+.about-section__description {
+  margin: 0;
+  color: var(--as-description-color);
+  font-size: var(--as-description-font-size-mobile);
+  line-height: 1.6;
+}
+
+.about-section__description p {
+  margin: 0 0 1em;
+}
+
+.about-section__description p:last-child {
+  margin-bottom: 0;
+}
+
+.about-section__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 1.2rem;
+  padding: 1.3rem 2.8rem;
+  border-radius: 6px;
+  background: var(--as-button-bg-color);
+  color: var(--as-button-text-color);
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.about-section__button:hover {
+  opacity: 0.9;
+}
+
+.about-section__stats {
+  display: grid;
+  grid-template-columns: repeat(var(--as-stats-columns-mobile, 2), 1fr);
+  gap: 2.4rem 1.6rem;
+  margin-top: 0.8rem;
+}
+
+.about-section__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+}
+
+.about-section__stat-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 0.2rem solid lightblue;
+  flex-shrink: 0 !important;
+}
+
+.about-section__stat-number {
+  margin: 0;
+  color: var(--as-stat-number-color, #4fb6e8);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.about-section__stat-title {
+  margin: 0;
+  color: var(--as-stat-title-color, #161616);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 749px) {
+  .about-section__wrapper {
+    max-width: var(--page-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .about-section__stats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem 0.1rem;
+  }
+
+  .about-section__stat {
+    gap: 0.6rem;
+  }
+
+  .about-section__stat-circle {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .about-section__stat-number {
+    font-size: 1.4rem;
+  }
+
+  .about-section__stat-title {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
+
+.about-section__media {
+  position: relative;
+}
+
+.about-section__decorative {
+  position: absolute;
+  top: -8%;
+  right: -12%;
+  width: 45%;
+  max-width: 220px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-section__decorative img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-section__image-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--as-image-width);
+  height: var(--as-image-height-mobile);
+  margin-inline: auto;
+  border-radius: var(--as-image-radius);
+  overflow: hidden;
+}
+
+.about-section__image-wrap img,
+.about-section__image-wrap .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media screen and (min-width: 750px) {
+  .about-section__eyebrow {
+    font-size: var(--as-eyebrow-font-size);
+  }
+
+  .about-section__heading {
+    font-size: var(--as-heading-font-size);
+  }
+
+  .about-section__description {
+    font-size: var(--as-description-font-size);
+  }
+
+  .about-section__stats {
+    grid-template-columns: repeat(var(--as-stats-columns-desktop, 4), 1fr);
+  }
+
+  .about-section__image-wrap {
+    height: var(--as-image-height);
+  }
+}

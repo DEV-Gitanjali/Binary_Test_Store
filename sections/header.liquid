@@ -98,6 +98,366 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* ============ Custom Header UI (Figma) — desktop only ============ */
+  @media screen and (min-width: 990px) {
+    .header-wrapper {
+      background: #ffffff;
+      border-bottom: none !important;
+      overflow-x: clip;
+      overflow-y: visible;
+    }
+    .section-header {
+      overflow-x: clip;
+    }
+
+    /* Two-row grid: top (logo | search + icons), bottom (menu full-bleed).
+       Header keeps its .page-width class → theme's standard side padding
+       (5rem desktop) and max-width var(--page-width). The menu row below
+       breaks out via width:100vw. */
+    .header-wrapper .header,
+    .header-wrapper .header.header--middle-left,
+    .header-wrapper .header.header--top-left,
+    .header-wrapper .header.header--middle-center,
+    .header-wrapper .header.header--top-center {
+      display: grid !important;
+      grid-template-columns: auto 1fr !important;
+      grid-template-rows: auto auto !important;
+      grid-template-areas:
+        "logo   icons"
+        "menu   menu" !important;
+      align-items: center;
+      column-gap: 24px;
+      row-gap: 0;
+      padding-top: 14px !important;
+      padding-bottom: 0 !important;
+    }
+
+    /* Logo */
+    .header-wrapper .header .header__heading,
+    .header-wrapper .header .header__heading-link,
+    .header-wrapper .header--middle-left .header__heading,
+    .header-wrapper .header--middle-left .header__heading-link {
+      grid-area: logo !important;
+      justify-self: start !important;
+      margin: 0;
+      padding: 0;
+    }
+    .header__heading-logo-wrapper {
+      display: block;
+    }
+
+    /* Icons row */
+    .header-wrapper .header .header__icons,
+    .header-wrapper .header--middle-left .header__icons {
+      grid-area: icons !important;
+      justify-self: end !important;
+      display: flex !important;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      justify-content: flex-end;
+      padding: 0 !important;
+    }
+    .header__icons .header__search {
+      flex: 0 0 auto;
+      width: 520px;
+      max-width: 45vw;
+      margin: 0;
+    }
+
+    /* Search — visual pill on the trigger summary */
+    .header__search {
+      display: block;
+    }
+    .header__search details {
+      width: 100%;
+    }
+    .header__search summary.header__icon,
+    .header__search summary.header__icon--search {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between !important;
+      width: 100% !important;
+      height: 46px;
+      padding: 0 22px !important;
+      border: 1px solid #E1E7F0 !important;
+      border-bottom: none !important;
+      border-radius: 999px !important;
+      background: #ffffff;
+      color: #1a1a1a;
+      cursor: text;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+      gap: 12px;
+    }
+    .header__search summary.header__icon {
+      text-decoration: none !important;
+    }
+    .header__search summary.header__icon::before {
+      content: "Search..";
+      color: #6B7A99;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none !important;
+    }
+    .header__search summary.header__icon .svg-wrapper,
+    .header__search summary.header__icon svg {
+      color: #1F3B7A;
+      width: 22px;
+      height: 22px;
+      order: 2;
+    }
+    .header__search summary.header__icon .icon-close-small {
+      display: none !important;
+    }
+
+    /* Account & Cart icons — blue */
+    .header__icon--account,
+    .header__icon--cart {
+      color: #1F3B7A;
+      width: auto;
+      height: auto;
+      padding: 6px !important;
+    }
+    .header__icon--account svg,
+    .header__icon--cart svg {
+      width: 24px;
+      height: 24px;
+      color: #1F3B7A;
+    }
+
+    /* Menu row — escapes .page-width to bleed edge-to-edge */
+    .header-wrapper .header .header__inline-menu,
+    .header-wrapper .header--middle-left .header__inline-menu {
+      grid-area: menu !important;
+      background: {{ section.settings.menu_row_bg | default: '#FCF1E4' }};
+      padding: 0px 5rem;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100vw !important;
+      max-width: none !important;
+      margin-top: 14px !important;
+      margin-bottom: 0 !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+      left: auto;
+      right: auto;
+    }
+    .header__inline-menu > ul.list-menu {
+      display: flex !important;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      gap: 40px;
+      margin: 0 !important;
+      padding: 0;
+      max-width: 100%;
+    }
+    /* <li> flush to strip top/bottom — no vertical padding around menu.
+       Menu item's own padding provides the click area. */
+    .header__inline-menu > ul > li {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      position: relative;
+    }
+    .header__inline-menu .header__menu-item,
+    .header__inline-menu .header__menu-item:hover,
+    .header__inline-menu .header__menu-item:focus,
+    .header__inline-menu .header__menu-item span,
+    .header__inline-menu .header__menu-item:hover span {
+      color: #1F3B7A !important;
+      font-size: 15px !important;
+      font-weight: 500 !important;
+      text-decoration: none !important;
+      text-decoration-line: none !important;
+      background: transparent !important;
+    }
+    .header__inline-menu .header__menu-item {
+      padding: 8px 0 !important;
+      position: relative;
+    }
+    /* Neutralize Dawn's active-item box treatment — underline is hover-only */
+    .header__inline-menu .header__menu-item .header__active-menu-item,
+    .header__inline-menu .header__menu-item[aria-current] .header__active-menu-item {
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none !important;
+      color: #1F3B7A;
+    }
+    /* Underline sits at strip's bottom edge (which is now = menu item bottom
+       since <li> has no vertical padding). */
+    .header__inline-menu .header__menu-item::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: #4A9AD9;
+      border-radius: 0;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      pointer-events: none;
+    }
+    .header__inline-menu > ul > li:hover > .header__menu-item::after,
+    .header__inline-menu > ul > li:focus-within > .header__menu-item::after,
+    .header__inline-menu > ul > li > header-menu:hover > details > .header__menu-item::after,
+    .header__inline-menu > ul > li > header-menu:focus-within > details > .header__menu-item::after,
+    .header__inline-menu > ul > li > header-menu > details[open] > .header__menu-item::after,
+    .header__inline-menu > ul > li:has(details[open]) > header-menu > details > .header__menu-item::after {
+      opacity: 1;
+    }
+    .header__inline-menu .header__menu-item:hover {
+      color: #4A9AD9 !important;
+    }
+
+    /* Last menu item styled as a CTA button (peach) — the Live Courses button */
+    .header__inline-menu > ul > li:last-child {
+      margin-left: 20px;
+    }
+    .header__inline-menu > ul > li:last-child > .header__menu-item,
+    .header__inline-menu > ul > li:last-child > .header__menu-item span {
+      background: {{ section.settings.cta_bg_color | default: '#F27052' }} !important;
+      color: #ffffff !important;
+      padding: 10px 26px !important;
+      /* border-radius: 6px; */
+      transition: filter 0.2s ease;
+    }
+    .header__inline-menu > ul > li:last-child > .header__menu-item span {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+    .header__inline-menu > ul > li:last-child > .header__menu-item:hover,
+    .header__inline-menu > ul > li:last-child > .header__menu-item:hover span {
+      color: #ffffff !important;
+      filter: brightness(1.08);
+    }
+    .header__inline-menu > ul > li:last-child > .header__menu-item::after,
+    .header__inline-menu > ul > li:last-child > .header__menu-item .header__active-menu-item::after {
+      display: none !important;
+    }
+
+    /* Hover-to-open dropdowns: force submenu to render, toggle visibility.
+       Positioning context is now the <li> (position: relative) which spans
+       full strip height, so top:100% attaches dropdown exactly at strip bottom. */
+    .header__inline-menu > ul > li > header-menu,
+    .header__inline-menu > ul > li > header-menu > details {
+      display: block;
+      position: static;
+    }
+    .header__inline-menu > ul > li > header-menu > details > .header__submenu {
+      display: block !important;
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
+      margin-top: 0 !important;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+    }
+    .header__inline-menu > ul > li > header-menu:hover > details > .header__submenu,
+    .header__inline-menu > ul > li > header-menu:focus-within > details > .header__submenu {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    /* Hide the down-caret icon on top-level menu items (per Figma) */
+    .header__inline-menu > ul > li > header-menu > details > .header__menu-item .icon-caret,
+    .header__inline-menu > ul > li > header-menu > details > .header__menu-item > svg {
+      display: none !important;
+    }
+    .header__inline-menu > ul > li > header-menu > details > .header__menu-item {
+      padding-right: 0 !important;
+    }
+
+    /* Dropdown submenu — white card (override Dawn's .gradient + color-scheme bg) */
+    .header-wrapper .header__inline-menu .header__submenu,
+    .header-wrapper .header__inline-menu .header__submenu.list-menu,
+    .header-wrapper .header__inline-menu .header__submenu.list-menu--disclosure,
+    .header-wrapper .header__inline-menu .header__submenu.gradient,
+    .header-wrapper .header__inline-menu .header__submenu.global-settings-popup {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      background-image: none !important;
+      background-attachment: initial !important;
+      border: none !important;
+      border-radius: 12px !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10) !important;
+      padding: 6px 0 !important;
+      min-width: 260px;
+    }
+    .header-wrapper .header__inline-menu .header__submenu > li {
+      border-bottom: 1px solid #E6ECF3 !important;
+      background: transparent !important;
+      display: block !important;
+    }
+    .header-wrapper .header__inline-menu .header__submenu > li:last-child {
+      border-bottom: none !important;
+    }
+    .header-wrapper .header__inline-menu .header__submenu .header__menu-item {
+      padding: 14px 24px !important;
+      color: #1F3B7A !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
+      display: block !important;
+      background: transparent !important;
+      text-decoration: none !important;
+      text-decoration-line: none !important;
+      justify-content: flex-start !important;
+    }
+    .header-wrapper .header__inline-menu .header__submenu .header__menu-item::after {
+      display: none !important;
+    }
+    .header-wrapper .header__inline-menu .header__submenu .header__menu-item:hover {
+      background: #F7FAFE !important;
+      color: #4A9AD9 !important;
+      text-decoration: none !important;
+      text-decoration-line: none !important;
+    }
+    /* First item — bold with blue underline (matches Figma) */
+    .header-wrapper .header__inline-menu .header__submenu > li:first-child .header__menu-item {
+      position: relative;
+      font-weight: 700 !important;
+    }
+    .header-wrapper .header__inline-menu .header__submenu > li:first-child .header__menu-item::after {
+      content: "" !important;
+      display: block !important;
+      position: absolute !important;
+      left: 24px !important;
+      right: 24px !important;
+      bottom: 0 !important;
+      top: auto !important;
+      height: 2px !important;
+      background: #4A9AD9 !important;
+      opacity: 1 !important;
+      border-radius: 0 !important;
+    }
+    /* Remove Dawn's default hover text-decoration in submenu */
+    .header-wrapper .header__submenu .header__menu-item:hover {
+      text-decoration-line: none !important;
+    }
+    /* Hide carets inside submenu items too */
+    .header-wrapper .header__inline-menu .header__submenu .icon-caret {
+      display: none !important;
+    }
+
+    /* Remove Dawn's default underline hover on menu items */
+    .header__inline-menu .header__menu-item:hover .header__active-menu-item,
+    .header__inline-menu .header__menu-item:not(:hover) .header__active-menu-item {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    /* Hide localization forms in the header (design doesn't show them) */
+    .desktop-localization-wrapper {
+      display: none !important;
+    }
+  }
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -304,6 +664,56 @@
     </div>
   </header>
 </{{ header_tag }}>
+
+<script>
+  (function () {
+    if (window.matchMedia('(max-width: 989px)').matches) return;
+    var wrapper = document.querySelector('.header-wrapper .header__inline-menu');
+    if (!wrapper) return;
+
+    var menus = wrapper.querySelectorAll('header-menu');
+    var openTimer, closeTimer;
+
+    menus.forEach(function (menu) {
+      var details = menu.querySelector(':scope > details');
+      if (!details) return;
+
+      function openDropdown() {
+        clearTimeout(closeTimer);
+        menus.forEach(function (m) {
+          if (m !== menu) {
+            var d = m.querySelector(':scope > details');
+            if (d) d.removeAttribute('open');
+          }
+        });
+        details.setAttribute('open', '');
+      }
+
+      function scheduleClose() {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+          details.removeAttribute('open');
+        }, 180);
+      }
+
+      menu.addEventListener('mouseenter', openDropdown);
+      menu.addEventListener('mouseleave', scheduleClose);
+      menu.addEventListener('focusin', openDropdown);
+      menu.addEventListener('focusout', function (e) {
+        if (!menu.contains(e.relatedTarget)) scheduleClose();
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!wrapper.contains(e.target)) {
+        menus.forEach(function (m) {
+          var d = m.querySelector(':scope > details');
+          if (d) d.removeAttribute('open');
+        });
+      }
+    });
+  })();
+</script>
 
 {%- if settings.cart_type == 'notification' -%}
   {%- render 'cart-notification',
@@ -584,6 +994,19 @@
       "id": "menu_color_scheme",
       "label": "t:sections.header.settings.menu_color_scheme.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "menu_row_bg",
+      "label": "Menu row background color",
+      "default": "#FCF1E4"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA (last menu link) background color",
+      "info": "The last item in the header menu is rendered as a highlighted button — set its color here.",
+      "default": "#F27052"
     },
     {
       "type": "header",

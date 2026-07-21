@@ -497,6 +497,150 @@
         "name": "Announcement bar"
       }
     },
+    "custom-announcement-bar": {
+      "name": "Custom announcement bar",
+      "settings": {
+        "header_layout": {
+          "content": "Layout"
+        },
+        "content_alignment": {
+          "label": "Content alignment",
+          "options__1": {
+            "label": "Space between"
+          },
+          "options__2": {
+            "label": "Center"
+          },
+          "options__3": {
+            "label": "Left"
+          },
+          "options__4": {
+            "label": "Right"
+          }
+        },
+        "show_on_desktop": {
+          "label": "Show on desktop"
+        },
+        "show_on_mobile": {
+          "label": "Show on mobile"
+        },
+        "header_style": {
+          "content": "Style"
+        },
+        "show_border_bottom": {
+          "label": "Show bottom border"
+        },
+        "show_divider": {
+          "label": "Show divider between right-side items"
+        },
+        "text_color": {
+          "label": "Text color"
+        },
+        "divider_color": {
+          "label": "Divider color"
+        },
+        "icon_color": {
+          "label": "Icon color",
+          "info": "Applies to preset icons. Leave blank to use the text color. Does not affect uploaded icon images."
+        },
+        "icon_size": {
+          "label": "Icon size"
+        },
+        "font_size": {
+          "label": "Text size"
+        },
+        "gap": {
+          "label": "Space between items"
+        },
+        "padding_top": {
+          "label": "Top padding"
+        },
+        "padding_bottom": {
+          "label": "Bottom padding"
+        }
+      },
+      "blocks": {
+        "left_item": {
+          "name": "Left item",
+          "settings": {
+            "icon_image": {
+              "label": "Custom icon image",
+              "info": "Uploaded image overrides the icon preset below"
+            },
+            "icon": {
+              "label": "Icon preset",
+              "info": "Used when no custom icon image is uploaded",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Clock"
+              },
+              "options__3": {
+                "label": "Phone"
+              },
+              "options__4": {
+                "label": "Mail"
+              },
+              "options__5": {
+                "label": "Location pin"
+              }
+            },
+            "icon_color": {
+              "label": "Icon color override"
+            },
+            "text": {
+              "label": "Text"
+            },
+            "link": {
+              "label": "Link",
+              "info": "Use tel:+1234567890 or mailto:name@example.com for click-to-call/email"
+            }
+          }
+        },
+        "right_item": {
+          "name": "Right item",
+          "settings": {
+            "icon_image": {
+              "label": "Custom icon image",
+              "info": "Uploaded image overrides the icon preset below"
+            },
+            "icon": {
+              "label": "Icon preset",
+              "info": "Used when no custom icon image is uploaded",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Clock"
+              },
+              "options__3": {
+                "label": "Phone"
+              },
+              "options__4": {
+                "label": "Mail"
+              },
+              "options__5": {
+                "label": "Location pin"
+              }
+            },
+            "icon_color": {
+              "label": "Icon color override"
+            },
+            "text": {
+              "label": "Text"
+            },
+            "link": {
+              "label": "Link",
+              "info": "Use tel:+1234567890 or mailto:name@example.com for click-to-call/email"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Custom announcement bar"
+      }
+    },
     "apps": {
       "name": "Apps",
       "settings": {

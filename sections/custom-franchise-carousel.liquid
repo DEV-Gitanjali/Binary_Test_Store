@@ -1,0 +1,540 @@
+{{ 'custom-franchise-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-franchise-carousel.js' | asset_url }}" defer="defer"></script>
+
+{%- capture star_outline -%}
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#D8DDE3"><path d="M12 2.5l2.9 6.4 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.3 1.5-6.8L2.2 9.6l6.9-.7L12 2.5z"/></svg>
+{%- endcapture -%}
+{%- capture star_filled -%}
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: var(--fc-rating-color, #2F8FBF);"><path d="M12 2.5l2.9 6.4 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.3 1.5-6.8L2.2 9.6l6.9-.7L12 2.5z"/></svg>
+{%- endcapture -%}
+
+{%- style -%}
+  .franchise-carousel-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    --fc-columns-desktop: {{ section.settings.columns_desktop }};
+    --fc-columns-mobile: {{ section.settings.columns_mobile }};
+    --fc-card-gap: {{ section.settings.card_gap }}px;
+    --fc-card-radius: {{ section.settings.card_radius }}px;
+    --fc-heading-color: {{ section.settings.heading_color }};
+    --fc-subheading-color: {{ section.settings.subheading_color }};
+    --fc-name-color: {{ section.settings.name_color }};
+    --fc-description-color: {{ section.settings.description_color }};
+    --fc-rating-color: {{ section.settings.rating_color }};
+    --fc-button-color: {{ section.settings.button_color }};
+    --fc-nav-active-color: {{ section.settings.nav_active_color }};
+    --fc-wave-color: {{ section.settings.wave_color }};
+    background-color: {{ section.settings.background_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .franchise-carousel-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<franchise-carousel
+  id="FranchiseCarousel-{{ section.id }}"
+  class="franchise-carousel franchise-carousel-{{ section.id }}"
+>
+  {%- if section.settings.show_wave -%}
+    <div class="franchise-carousel__wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,64 C240,120 480,0 720,32 C960,64 1200,120 1440,64 L1440,120 L0,120 Z"></path>
+      </svg>
+    </div>
+  {%- endif -%}
+
+  <div class="franchise-carousel__wrapper page-width">
+    {%- liquid
+      assign mobile_heading_text = section.settings.mobile_heading
+      if mobile_heading_text == blank
+        assign mobile_heading_text = section.settings.heading
+      endif
+      assign view_all_url = section.settings.view_all_link
+      if view_all_url == blank
+        assign view_all_url = routes.collections_url
+      endif
+    -%}
+    {%- if section.settings.heading != blank or section.settings.subheading != blank or section.settings.show_nav_arrows -%}
+      <div class="franchise-carousel__header">
+        <div class="franchise-carousel__heading-group">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="franchise-carousel__heading {{ section.settings.heading_size }}">
+              <span class="franchise-carousel__heading-desktop">{{ section.settings.heading | escape }}</span>
+              <span class="franchise-carousel__heading-mobile">{{ mobile_heading_text | escape }}</span>
+            </h2>
+          {%- endif -%}
+          {%- if section.settings.subheading != blank -%}
+            <p class="franchise-carousel__subheading">{{ section.settings.subheading | escape }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_nav_arrows -%}
+          <div class="franchise-carousel__nav">
+            <button
+              type="button"
+              class="franchise-carousel__nav-btn franchise-carousel__nav-btn--prev"
+              aria-label="{{ 'general.slider.previous_slide' | t: default: 'Previous' }}"
+            >
+              {%- if section.settings.prev_icon != blank -%}
+                {{
+                  section.settings.prev_icon
+                  | image_url: width: 64
+                  | image_tag: loading: 'lazy', widths: '32, 48, 64', class: 'franchise-carousel__nav-icon'
+                }}
+              {%- else -%}
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              {%- endif -%}
+            </button>
+            <button
+              type="button"
+              class="franchise-carousel__nav-btn franchise-carousel__nav-btn--next"
+              aria-label="{{ 'general.slider.next_slide' | t: default: 'Next' }}"
+            >
+              {%- if section.settings.next_icon != blank -%}
+                {{
+                  section.settings.next_icon
+                  | image_url: width: 64
+                  | image_tag: loading: 'lazy', widths: '32, 48, 64', class: 'franchise-carousel__nav-icon'
+                }}
+              {%- else -%}
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              {%- endif -%}
+            </button>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_view_all_mobile -%}
+          <a href="{{ view_all_url }}" class="franchise-carousel__view-all">
+            {{- section.settings.view_all_label | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="franchise-carousel__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign full_stars = block.settings.rating | floor
+            assign has_half = false
+            assign remainder = block.settings.rating | minus: full_stars
+            if remainder >= 0.5
+              assign has_half = true
+            endif
+            assign half_index = full_stars | plus: 1
+          -%}
+          <li class="franchise-carousel__item" {{ block.shopify_attributes }}>
+            <div class="franchise-carousel__card">
+              <div class="franchise-carousel__avatar">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 400
+                    | image_tag: loading: 'lazy', widths: '150, 250, 400', alt: block.settings.name
+                  }}
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'franchise-carousel__avatar-placeholder' }}
+                {%- endif -%}
+              </div>
+
+              <div class="franchise-carousel__content">
+                <div class="franchise-carousel__info">
+                  {%- if block.settings.position != blank -%}
+                    <p class="franchise-carousel__position" style="color: {{ block.settings.position_color }};">
+                      {{- block.settings.position | escape -}}
+                    </p>
+                  {%- endif -%}
+                  {%- if block.settings.name != blank -%}
+                    <p class="franchise-carousel__name">{{ block.settings.name | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+                {%- if block.settings.description != blank -%}
+                  <p class="franchise-carousel__description">{{ block.settings.description | escape }}</p>
+                {%- endif -%}
+
+                <div class="franchise-carousel__footer">
+                  {%- if block.settings.rating > 0 -%}
+                    <div class="franchise-carousel__rating">
+                      <span class="franchise-carousel__stars">
+                        {%- for i in (1..5) -%}
+                          <span class="franchise-carousel__star">
+                            {{- star_outline -}}
+                            {%- if i <= full_stars -%}
+                              <span class="franchise-carousel__star-fill" style="width: 100%;">{{ star_filled }}</span>
+                            {%- elsif has_half and i == half_index -%}
+                              <span class="franchise-carousel__star-fill" style="width: 50%;">{{ star_filled }}</span>
+                            {%- endif -%}
+                          </span>
+                        {%- endfor -%}
+                      </span>
+                      {%- if block.settings.reviews_label != blank -%}
+                        <span class="franchise-carousel__reviews">{{ block.settings.reviews_label | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if block.settings.button_label != blank -%}
+                    <a
+                      href="{{ block.settings.button_link | default: '#' }}"
+                      class="franchise-carousel__button"
+                    >
+                    {{- block.settings.button_label | escape -}}
+                    <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                  </a>
+                {%- endif -%}
+                </div>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.blocks.size > 1 -%}
+        <div class="franchise-carousel__dots">
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="franchise-carousel__dot{% if forloop.first %} is-active{% endif %}"
+              data-index="{{ forloop.index0 }}"
+              aria-label="{{ 'general.slider.name' | t: default: 'Go to slide' }} {{ forloop.index }}"
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</franchise-carousel>
+
+{% schema %}
+{
+  "name": "Franchise carousel",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 16,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Franchise"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Talk with our experts",
+      "info": "Hidden on mobile screens"
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading",
+      "label": "Mobile heading",
+      "info": "Optional. Overrides the heading above on mobile screens only.",
+      "default": "Consultation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_mobile",
+      "label": "Show 'View all' link (mobile)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "'View all' label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "'View all' link",
+      "info": "Leave blank to link to all collections"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#BEE7F7"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wave",
+      "label": "Show curved bottom edge",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "wave_color",
+      "label": "Curved edge color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "Cards visible on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Cards visible on mobile",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between cards",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 18
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_arrows",
+      "label": "Show previous/next arrows",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "nav_active_color",
+      "label": "Active arrow color",
+      "default": "#F5A623"
+    },
+    {
+      "type": "image_picker",
+      "id": "prev_icon",
+      "label": "Previous arrow icon",
+      "info": "Optional. Replaces the default caret icon."
+    },
+    {
+      "type": "image_picker",
+      "id": "next_icon",
+      "label": "Next arrow icon",
+      "info": "Optional. Replaces the default caret icon."
+    },
+    {
+      "type": "header",
+      "content": "Heading colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#0B2E4E"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#2F8FBF"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name color",
+      "default": "#0B2E4E"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#55677A"
+    },
+    {
+      "type": "color",
+      "id": "rating_color",
+      "label": "Star rating color",
+      "default": "#2F8FBF"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "'View Detail' button color",
+      "default": "#F5A623"
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "franchise_card",
+      "name": "Franchise card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "position",
+          "label": "Position / role",
+          "default": "Acharya"
+        },
+        {
+          "type": "color",
+          "id": "position_color",
+          "label": "Position color",
+          "default": "#F5A623"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Full Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Services : Residential Vastu, Industrial Vastu, Gemstone"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 0.5,
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "reviews_label",
+          "label": "Reviews label",
+          "default": "5 reviews"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "View Detail"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Franchise carousel",
+      "blocks": [
+        {
+          "type": "franchise_card",
+          "settings": {
+            "position": "Acharya",
+            "position_color": "#F5A623",
+            "name": "Shreni Rajbhandary",
+            "description": "Services : Residential Vastu, Industrial Vastu, Gemstone"
+          }
+        },
+        {
+          "type": "franchise_card",
+          "settings": {
+            "position": "Core",
+            "position_color": "#2F8FBF",
+            "name": "Deepika",
+            "description": "Services : Commercial Vastu, Numerology, Rudraksha"
+          }
+        },
+        {
+          "type": "franchise_card",
+          "settings": {
+            "position": "Franchise",
+            "position_color": "#2F8FBF",
+            "name": "Payal Gupta",
+            "description": "Services : Industrial Vastu, Gemstone"
+          }
+        },
+        {
+          "type": "franchise_card",
+          "settings": {
+            "position": "Franchise",
+            "position_color": "#2F8FBF",
+            "name": "Priya Sharma",
+            "description": "Services : Numerology, Rudraksha, Gemstone"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

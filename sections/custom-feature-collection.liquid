@@ -1,0 +1,364 @@
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'custom-feature-collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign products_source = section.settings.collection.products
+  assign products_to_show = section.settings.products_to_show
+  assign columns_mobile_setting = section.settings.columns_mobile
+
+  if columns_mobile_setting == '1.5'
+    assign mobile_grid_class = 'grid--1-col-tablet-down custom-fc__list--peek-15'
+  else
+    assign mobile_grid_class = 'grid--' | append: columns_mobile_setting | append: '-col-tablet-down'
+  endif
+
+  assign bg_color = section.settings.bg_color
+  assign bg_image = section.settings.bg_image
+  assign bg_image_size = section.settings.bg_image_size
+-%}
+
+{%- capture bg_style -%}
+  {%- if bg_color != blank and bg_color != 'rgba(0,0,0,0)' -%}background-color: {{ bg_color }};{%- endif -%}
+  {%- if bg_image != blank -%}
+    background-image: url({{ bg_image | image_url: width: 2000 }});
+    {%- if bg_image_size == 'repeat' -%}
+      background-repeat: repeat;
+      background-position: top left;
+    {%- else -%}
+      background-size: {{ bg_image_size | default: 'cover' }};
+      background-position: center;
+      background-repeat: no-repeat;
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="custom-fc color-{{ section.settings.color_scheme }} isolate gradient"{% if bg_style != blank %} style="{{ bg_style | strip_newlines | strip }}"{% endif %}>
+  <div class="section-{{ section.id }}-padding">
+    <slider-component class="custom-fc__slider-component">
+      <div class="custom-fc__header page-width">
+        <div class="custom-fc__header-spacer" aria-hidden="true"></div>
+
+        <div class="custom-fc__header-text">
+          {%- if section.settings.title != blank -%}
+            <h2 class="custom-fc__title inline-richtext">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subtitle != blank -%}
+            <p class="custom-fc__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.collection.url != blank -%}
+          <a href="{{ section.settings.collection.url }}" class="custom-fc__view-all-link">
+            {{ 'sections.featured_collection.view_all' | t }}
+          </a>
+        {%- endif -%}
+
+        <div class="custom-fc__nav slider-buttons">
+          <button
+            type="button"
+            class="custom-fc__nav-btn slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="custom-fc__nav-btn custom-fc__nav-btn--next slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="custom-fc__slider-wrap slider-mobile-gutter slider-component-desktop">
+        {%- if products_source.size > 0 -%}
+          <ul
+            id="Slider-{{ section.id }}"
+            data-id="{{ section.id }}"
+            class="custom-fc__list grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop {{ mobile_grid_class }} slider slider--tablet slider--desktop grid--peek"
+            role="list"
+            aria-label="{{ 'general.slider.name' | t }}"
+          >
+            {%- assign skip_styles = false -%}
+            {%- for product in products_source limit: products_to_show -%}
+              <li
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}
+              >
+                {% render 'custom-product-card',
+                  card_product: product,
+                  section_id: section.id,
+                  lazy_load: false,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  skip_styles: skip_styles
+                %}
+              </li>
+              {%- assign skip_styles = true -%}
+            {%- endfor -%}
+          </ul>
+        {%- else -%}
+          <ul
+            id="Slider-{{ section.id }}"
+            data-id="{{ section.id }}"
+            class="custom-fc__list grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop {{ mobile_grid_class }}"
+            role="list"
+          >
+            {%- for i in (1..section.settings.columns_desktop) -%}
+              {%- liquid
+                assign ridx = forloop.rindex
+                case ridx
+                  when 5
+                    assign ridx = 1
+                  when 6
+                    assign ridx = 2
+                endcase
+                assign placeholder_image = 'product-apparel-' | append: ridx
+              -%}
+              <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="grid__item">
+                {% render 'custom-product-card',
+                  lazy_load: false,
+                  placeholder_image: placeholder_image,
+                  skip_styles: forloop.first == false
+                %}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      {%- if products_source.size > 1 -%}
+        {%- assign displayed = products_source.size -%}
+        {%- if displayed > products_to_show -%}{%- assign displayed = products_to_show -%}{%- endif -%}
+        <div class="custom-fc__dots-wrap page-width">
+          <div class="custom-fc__dots" role="tablist" aria-label="{{ 'general.slider.name' | t }}">
+            {%- for i in (1..displayed) -%}
+              <button
+                type="button"
+                class="custom-fc__dot{% if forloop.first %} is-active{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                aria-label="Go to slide {{ forloop.index }}"
+              ></button>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </slider-component>
+
+    {%- if section.settings.show_view_all and section.settings.collection.url != blank -%}
+      <div class="custom-fc__view-all-wrap page-width">
+        <a href="{{ section.settings.collection.url }}" class="custom-fc__view-all-btn">
+          {{ 'sections.featured_collection.view_all' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+    var list = section.querySelector('.custom-fc__list');
+    var dots = section.querySelectorAll('.custom-fc__dot');
+    if (!list || !dots.length) return;
+
+    function updateDots() {
+      var items = list.querySelectorAll('li');
+      if (!items.length) return;
+      var itemWidth = items[0].getBoundingClientRect().width;
+      var styles = getComputedStyle(list);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      var step = itemWidth + gap;
+      if (step <= 0) return;
+      var idx = Math.round(list.scrollLeft / step);
+      idx = Math.max(0, Math.min(idx, dots.length - 1));
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('is-active', i === idx);
+      }
+    }
+
+    list.addEventListener('scroll', updateDots, { passive: true });
+    window.addEventListener('resize', updateDots);
+
+    for (var i = 0; i < dots.length; i++) {
+      (function (index) {
+        dots[index].addEventListener('click', function () {
+          var items = list.querySelectorAll('li');
+          if (items[index]) {
+            items[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+          }
+        });
+      })(i);
+    }
+
+    updateDots();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Featured Slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Best Sellers",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Excellence you can trust",
+      "label": "Subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "Number of columns on desktop"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "1.5",
+      "label": "Number of columns on mobile",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "1.5", "label": "1.5 columns (with peek)" },
+        { "value": "2", "label": "2 columns" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "Show second image on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "Show \"View all\" button below the products"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Section background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "info": "Overrides the color scheme background. Leave empty to fall back to the color scheme."
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image / SVG",
+      "info": "Displayed behind the products. SVG files are supported."
+    },
+    {
+      "type": "select",
+      "id": "bg_image_size",
+      "label": "Background image display",
+      "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Fill (cover)" },
+        { "value": "contain", "label": "Fit (contain)" },
+        { "value": "repeat", "label": "Tile (repeat)" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Featured Slider"
+    }
+  ]
+}
+{% endschema %}

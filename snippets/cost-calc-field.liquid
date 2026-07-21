@@ -1,0 +1,109 @@
+{%- liquid
+  assign field_name = block.settings.name | default: 'field'
+  if form_prefix != blank
+    assign field_name = form_prefix | append: field_name | append: ']'
+  endif
+  assign field_type = block.settings.field_type
+-%}
+
+{%- if field_type == 'hidden' -%}
+  <input type="hidden" name="{{ field_name }}" value="{{ block.settings.default_value }}" {{ block.shopify_attributes }}>
+{%- else -%}
+  <div
+    class="cost-calc__field cost-calc__field--{{ field_type }} cost-calc__field--w{{ block.settings.width }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- if field_type == 'checkbox' -%}
+      <label class="cost-calc__checkbox-label">
+        <input
+          type="checkbox"
+          name="{{ field_name }}"
+          value="{{ block.settings.default_value | default: 'yes' }}"
+          {% if block.settings.required %}required{% endif %}
+          data-error-message="{{ block.settings.error_message | escape }}"
+        >
+        <span>{{ block.settings.label | escape }}</span>
+      </label>
+    {%- else -%}
+      {%- if block.settings.label != blank -%}
+        <label class="cost-calc__field-label" for="{{ field_name }}">
+          {{- block.settings.label | escape -}}
+          {%- if block.settings.required %}<span class="cost-calc__required">*</span>{% endif -%}
+        </label>
+      {%- endif -%}
+
+      {%- case field_type -%}
+        {%- when 'textarea' -%}
+          <textarea
+            id="{{ field_name }}"
+            name="{{ field_name }}"
+            class="cost-calc__input"
+            rows="4"
+            placeholder="{{ block.settings.placeholder | escape }}"
+            {% if block.settings.required %}required{% endif %}
+            data-error-message="{{ block.settings.error_message | escape }}"
+          >{{ block.settings.default_value }}</textarea>
+
+        {%- when 'dropdown' -%}
+          <select
+            id="{{ field_name }}"
+            name="{{ field_name }}"
+            class="cost-calc__input"
+            {% if block.settings.required %}required{% endif %}
+            data-error-message="{{ block.settings.error_message | escape }}"
+          >
+            {%- if block.settings.placeholder != blank -%}
+              <option value="" disabled {% if block.settings.default_option == blank %}selected{% endif %}>
+                {{- block.settings.placeholder | escape -}}
+              </option>
+            {%- endif -%}
+            {%- assign options = block.settings.options | newline_to_br | split: '<br />' -%}
+            {%- for option in options -%}
+              {%- assign option = option | strip -%}
+              {%- if option != blank -%}
+                <option value="{{ option | escape }}" {% if option == block.settings.default_option %}selected{% endif %}>
+                  {{- option -}}
+                </option>
+              {%- endif -%}
+            {%- endfor -%}
+          </select>
+
+        {%- when 'phone' -%}
+          <input
+            type="tel"
+            id="{{ field_name }}"
+            name="{{ field_name }}"
+            class="cost-calc__input"
+            placeholder="{{ block.settings.placeholder | escape }}"
+            value="{{ block.settings.default_value | escape }}"
+            {% if block.settings.required %}required{% endif %}
+            data-error-message="{{ block.settings.error_message | escape }}"
+          >
+
+        {%- when 'email' -%}
+          <input
+            type="email"
+            id="{{ field_name }}"
+            name="{{ field_name }}"
+            class="cost-calc__input"
+            placeholder="{{ block.settings.placeholder | escape }}"
+            value="{{ block.settings.default_value | escape }}"
+            {% if block.settings.required %}required{% endif %}
+            data-error-message="{{ block.settings.error_message | escape }}"
+          >
+
+        {%- else -%}
+          <input
+            type="text"
+            id="{{ field_name }}"
+            name="{{ field_name }}"
+            class="cost-calc__input"
+            placeholder="{{ block.settings.placeholder | escape }}"
+            value="{{ block.settings.default_value | escape }}"
+            {% if block.settings.required %}required{% endif %}
+            data-error-message="{{ block.settings.error_message | escape }}"
+          >
+      {%- endcase -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}

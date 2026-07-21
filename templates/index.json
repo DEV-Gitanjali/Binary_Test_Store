@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -26,50 +35,1382 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "custom_slide_QXFfM8": {
+      "type": "custom-slide",
+      "blocks": {
+        "slide_wqFQmc": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "desktop_image": "shopify://shop_images/Group_26042_2x_255dfb16-c638-4264-a123-517ecb2a1500.png",
+            "mobile_image": "shopify://shop_images/Group_21186_2x_00b9cb55-d68e-42c9-9f02-32768bed0002.png",
+            "overlay_opacity": 20,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_6TrqHR": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "desktop_image": "shopify://shop_images/Group_26042_2x_255dfb16-c638-4264-a123-517ecb2a1500.png",
+            "mobile_image": "shopify://shop_images/Group_21186_2x_00b9cb55-d68e-42c9-9f02-32768bed0002.png",
+            "overlay_opacity": 20,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_wqFQmc",
+        "slide_6TrqHR"
+      ],
+      "name": "Custom slideshow",
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "slider_visual": "dots",
+        "enable_video_loop": false,
+        "desktop_media_width": 100,
+        "desktop_media_height": 600,
+        "mobile_media_width": 100,
+        "mobile_media_height": 200,
+        "accessibility_info": "Featured slides"
+      }
+    },
+    "custom_services_grid_7gwPR4": {
+      "type": "custom-services-grid",
+      "blocks": {
+        "service_card_eGRbVW": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/house.svg",
+            "title": "Residential Vastu",
+            "background_color": "#e4f9eb",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_i6R6MM": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/office.svg",
+            "title": "Commercial Vastu",
+            "background_color": "#f8ecd9",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_CLmdkt": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/industry.svg",
+            "title": "Industrial Vastu",
+            "background_color": "#e5e2ff",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_fXDU7x": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/numerology.svg",
+            "title": "Numerology",
+            "background_color": "#f9e4e8",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_DWgUQf": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_x0020_1.svg",
+            "title": "Gemstone",
+            "background_color": "#e3f5e4",
+            "background_gradient": "",
+            "link": ""
+          }
+        },
+        "service_card_Lg7fT9": {
+          "type": "service_card",
+          "settings": {
+            "icon": "shopify://shop_images/beads.svg",
+            "title": "Rudraksha",
+            "background_color": "#ccdff6",
+            "background_gradient": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_card_eGRbVW",
+        "service_card_i6R6MM",
+        "service_card_CLmdkt",
+        "service_card_fXDU7x",
+        "service_card_DWgUQf",
+        "service_card_Lg7fT9"
+      ],
+      "name": "Services card grid",
+      "settings": {
+        "heading": "Our Services",
+        "heading_size": "h1",
+        "description": "<p>Our experts provide effective Numerology and vastu Services to the clients across the globe. Life is not a bed of roses; it is a path full of thorns. Life has a number of problems to face. Such problems can be resolved with the help of intelligence. Numerology and vastu indicates the various ways in which problems of life can be resolved. It is a science of rare powers.</p>",
+        "text_alignment": "center",
+        "columns_desktop": 6,
+        "columns_mobile": 3,
+        "card_gap": 28,
+        "card_padding": 18,
+        "card_radius": 16,
+        "heading_color": "#143f71",
+        "text_color": "#001227",
+        "font_size": 14,
+        "font_weight": "600",
+        "section_background": "",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "custom_promo_highlight_gMXNFi": {
+      "type": "custom-promo-highlight",
+      "blocks": {
+        "promo_card_3q4ttU": {
+          "type": "promo_card",
+          "settings": {
+            "image": "shopify://shop_images/Group_26043_2x_a516f8b5-a46f-4f1d-9d77-3dc6cf69c2e5.png",
+            "title": "Unlock the Secrets of Your Numbers with the",
+            "subtitle": "Numerology Calculator",
+            "background_color": "#fff1cc",
+            "background_gradient": "",
+            "border_color": "#ebd8a5",
+            "subtitle_color": "#d98e1e",
+            "link": ""
+          }
+        },
+        "promo_card_XjWCmy": {
+          "type": "promo_card",
+          "settings": {
+            "image": "shopify://shop_images/Group_26044.svg",
+            "title": "Let's Discover Your Perfect",
+            "subtitle": "Lucky Gemstone!",
+            "background_color": "#E3DDF8",
+            "background_gradient": "",
+            "border_color": "#d5c7f2",
+            "subtitle_color": "#6e4fc9",
+            "link": ""
+          }
+        },
+        "promo_card_xEVQbE": {
+          "type": "promo_card",
+          "settings": {
+            "image": "shopify://shop_images/Group_26101.svg",
+            "title": "Unveil Your Destiny with",
+            "subtitle": "Astro Kundli Insights!",
+            "background_color": "#dff3e3",
+            "background_gradient": "",
+            "border_color": "#bfe5c7",
+            "subtitle_color": "#2f8f52",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promo_card_3q4ttU",
+        "promo_card_XjWCmy",
+        "promo_card_xEVQbE"
+      ],
+      "name": "Promo highlight cards",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "show_arrow": true,
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "card_gap": 20,
+        "card_padding": 16,
+        "card_radius": 20,
+        "title_color": "#324356",
+        "title_font_size": 15,
+        "subtitle_font_weight": "600",
+        "section_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_premium_services_fcM4Wf": {
+      "type": "custom-premium-services",
+      "blocks": {
+        "premium_service_card_4g9zM6": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/numerology.svg",
+            "title": "Numerology Report",
+            "background_color": "#faf5e9",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_yQ74tF": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/g2151.svg",
+            "title": "Vastu Evaluation Report",
+            "background_color": "#faf6ed",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_H6QDni": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/x33_6.svg",
+            "title": "Astro Vastu Fortune Report",
+            "background_color": "#faf6ed",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": false
+          }
+        },
+        "premium_service_card_VKpjUW": {
+          "type": "premium_service_card",
+          "settings": {
+            "icon": "shopify://shop_images/x33_6.svg",
+            "title": "Astro Vastu Fortune Report",
+            "background_color": "#faf6ed",
+            "background_gradient": "",
+            "link": "",
+            "mobile_peek_only": true
+          }
+        }
+      },
+      "block_order": [
+        "premium_service_card_4g9zM6",
+        "premium_service_card_yQ74tF",
+        "premium_service_card_H6QDni",
+        "premium_service_card_VKpjUW"
+      ],
+      "name": "Premium Services",
+      "settings": {
+        "heading": "Premium Services",
+        "heading_size": "h1",
+        "description": "",
+        "text_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": 2,
+        "card_gap": 8,
+        "card_padding": 16,
+        "card_radius": 12,
+        "card_width": 400,
+        "card_height": 160,
+        "heading_color": "#143f71",
+        "text_color": "#324356",
+        "font_size": 15,
+        "font_weight": "600",
+        "section_background": "",
+        "padding_top": 40,
+        "padding_horizontal": 48,
+        "padding_bottom": 56
+      }
+    },
+    "custom_feature_collection_ErPawq": {
+      "type": "custom-feature-collection",
+      "name": "Custom Featured Slider",
+      "settings": {
+        "collection": "bestsellers",
+        "products_to_show": 8,
+        "title": "Best Sellers",
+        "subtitle": "Excellence you can trust",
+        "columns_desktop": 4,
+        "columns_mobile": "1.5",
+        "show_secondary_image": false,
+        "show_view_all": true,
+        "color_scheme": "",
+        "bg_color": "#fffcf5",
+        "bg_image": "shopify://shop_images/ZODIAC-CONSTELLATION-MAP.png",
+        "bg_image_size": "contain",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "custom_nested_slider_section_KqUrXJ": {
+      "type": "custom-nested-slider-section",
+      "blocks": {
+        "course_n7wrDE": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_DiJtXy": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_fKNxPX": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_nYNHph": {
+          "type": "course",
+          "settings": {
+            "tab_type": "live",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#ffffff",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_Fwh8Ez": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_kD9V7n": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_yzpnaY": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_20815_2x_ef752fe0-ab7f-458e-b874-98a9abbdfed5.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "course_9PjgQT": {
+          "type": "course",
+          "settings": {
+            "tab_type": "recorded",
+            "instructor_image": "shopify://shop_images/Group_21239_2x_b103d1c0-9a92-4890-9a0a-a4c92aeb4d2d.png",
+            "instructor_name": "ACHARYA VIKUL BANSAL",
+            "bg_color": "#f0c7a4",
+            "tagline": "Join Perfessional",
+            "course_heading": "VASTU & NUMEROLOGY",
+            "course_date": "24 Jan 25\n6:40 to 8:30 PM",
+            "post_date": "04 Sep 2024",
+            "title": "Vastu and Numerology Course",
+            "price": "₹3200.00",
+            "button_label": "View Details",
+            "button_url": ""
+          }
+        },
+        "step_mR6y8D": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Group_26045_2x_ea392753-1974-41e3-a7d9-1a592c564d64.png",
+            "title": "Pick a Suitable Course"
+          }
+        },
+        "step_RFXQcQ": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Group_26046_2x_84e821d2-672b-4d20-bdb2-97f9d54de9f1.png",
+            "title": "Enroll The Course"
+          }
+        },
+        "step_rUBBNU": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Group_26047_2x_9acee0c1-a45a-4e87-87aa-3930ea2e2177.png",
+            "title": "Become a Professional"
+          }
+        }
+      },
+      "block_order": [
+        "course_n7wrDE",
+        "course_DiJtXy",
+        "course_fKNxPX",
+        "course_nYNHph",
+        "course_Fwh8Ez",
+        "course_kD9V7n",
+        "course_yzpnaY",
+        "course_9PjgQT",
+        "step_mR6y8D",
+        "step_RFXQcQ",
+        "step_rUBBNU"
+      ],
+      "name": "Nested Slider Section",
+      "settings": {
+        "courses_title": "Our Courses",
+        "courses_subtitle": "Learn today, Lead tomorrow.",
+        "tab1_label": "Live Course",
+        "tab2_label": "Recorded Courses",
+        "courses_bg_color": "rgba(0,0,0,0)",
+        "how_title": "How it works",
+        "how_subtitle": "Become a professional consultant in 3 simple steps",
+        "how_bg_color": "#143a72",
+        "enquire_eyebrow": "Enquire",
+        "enquire_title": "About Course",
+        "enquire_submit": "Submit Details",
+        "enquire_gradient_end": "#f27052"
+      }
+    },
+    "custom_collection_grid_LhFm7W": {
+      "type": "custom-collection-grid",
+      "blocks": {
+        "collection_card_Pj7QF7": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_21184.png",
+            "title": "Bracelets"
+          }
+        },
+        "collection_card_enCeRk": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26049_2x_3e712181-de62-4c91-9a4e-362772a37b49.png",
+            "title": "3d-Remedies"
+          }
+        },
+        "collection_card_YfhBLK": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26050.png",
+            "title": "Rudraksh"
+          }
+        },
+        "collection_card_NdXfqC": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26051.png",
+            "title": "Devta Divs"
+          }
+        },
+        "collection_card_knpQqg": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26052.png",
+            "title": "Color-Tapes"
+          }
+        },
+        "collection_card_EhkiHt": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26053_2x_55b11f45-7656-447d-b323-d0a6b99fdcb6.png",
+            "title": "Strips"
+          }
+        },
+        "collection_card_L3bmtt": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26054_2x_a93f5776-d5d8-4d00-8fe0-04cada7038c5.png",
+            "title": "Studs"
+          }
+        },
+        "collection_card_fTL4FP": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Group_26055_2x_b88f7a74-3da9-4456-becd-4700dd919d5d.png",
+            "title": "+More Remedies"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_Pj7QF7",
+        "collection_card_enCeRk",
+        "collection_card_YfhBLK",
+        "collection_card_NdXfqC",
+        "collection_card_knpQqg",
+        "collection_card_EhkiHt",
+        "collection_card_L3bmtt",
+        "collection_card_fTL4FP"
+      ],
+      "name": "Collection grid",
+      "settings": {
+        "heading": "Remedies",
+        "heading_size": "h1",
+        "subheading": "Natural remedies for real results.",
+        "show_view_all": true,
+        "view_all_label": "View all",
+        "view_all_link": "",
+        "background_color": "#ffffff",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "card_gap": 20,
+        "card_radius": 14,
+        "overlay_color": "#000000",
+        "overlay_opacity": 65,
+        "title_color": "#ffffff",
+        "title_font_size": 18,
+        "title_font_weight": "700",
+        "heading_color": "#1e3a5f",
+        "subheading_color": "#3a7ca5",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "custom_franchise_carousel_BexBVe": {
+      "type": "custom-franchise-carousel",
+      "blocks": {
+        "franchise_card_bwj3Xg": {
+          "type": "franchise_card",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_7298.png",
+            "position": "Acharya",
+            "position_color": "#f5a623",
+            "name": "Shreni Rajbhandary",
+            "description": "Services : Residential Vastu, Industrial Vastu, Gemstone",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        },
+        "franchise_card_4KAe6T": {
+          "type": "franchise_card",
+          "settings": {
+            "image": "shopify://shop_images/Image_132.png",
+            "position": "Core",
+            "position_color": "#2f8fbf",
+            "name": "Deepika",
+            "description": "Services : Commercial Vastu, Numerology, Rudraksha",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        },
+        "franchise_card_KxPHWx": {
+          "type": "franchise_card",
+          "settings": {
+            "image": "shopify://shop_images/Image_133.png",
+            "position": "Franchise",
+            "position_color": "#2f8fbf",
+            "name": "Payal Gupta",
+            "description": "Services : Industrial Vastu, Gemstone",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        },
+        "franchise_card_tCEBET": {
+          "type": "franchise_card",
+          "settings": {
+            "position": "Franchise",
+            "position_color": "#2f8fbf",
+            "name": "Priya Sharma",
+            "description": "Services : Numerology, Rudraksha, Gemstone",
+            "rating": 5,
+            "reviews_label": "5 reviews",
+            "button_label": "View Detail",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "franchise_card_bwj3Xg",
+        "franchise_card_4KAe6T",
+        "franchise_card_KxPHWx",
+        "franchise_card_tCEBET"
+      ],
+      "name": "Franchise carousel",
+      "settings": {
+        "heading": "Franchise",
+        "heading_size": "h1",
+        "subheading": "Talk with our experts",
+        "mobile_heading": "Consultation",
+        "show_view_all_mobile": true,
+        "view_all_label": "View all",
+        "view_all_link": "",
+        "background_color": "#c8dde6",
+        "show_wave": true,
+        "wave_color": "#ffffff",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "card_gap": 24,
+        "card_radius": 18,
+        "show_nav_arrows": true,
+        "nav_active_color": "#f5a623",
+        "prev_icon": "shopify://shop_images/8666777_chevron_right_arrow_icon_4.svg",
+        "next_icon": "shopify://shop_images/8666777_chevron_right_arrow_icon_5.svg",
+        "heading_color": "#0b2e4e",
+        "subheading_color": "#2f8fbf",
+        "name_color": "#0b2e4e",
+        "description_color": "#55677a",
+        "rating_color": "#2f8fbf",
+        "button_color": "#f5a623",
+        "padding_top": 64,
+        "padding_bottom": 160
+      }
+    },
+    "rich_text_MkFUzL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_H8mA6P": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_MQ7p8m": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_H8mA6P",
+        "text_MQ7p8m"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 76,
+        "padding_bottom": 52
+      }
+    },
+    "custom_about_section_qA7vLp": {
+      "type": "custom-about-section",
+      "blocks": {
+        "stat_h4mRxT": {
+          "type": "stat",
+          "settings": {
+            "number": "2k",
+            "title": "Completed Projects",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        },
+        "stat_n2WkTb": {
+          "type": "stat",
+          "settings": {
+            "number": "3k",
+            "title": "Student Trained",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        },
+        "stat_Ry8fQd": {
+          "type": "stat",
+          "settings": {
+            "number": "90k",
+            "title": "Order Products",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        },
+        "stat_9mLpXe": {
+          "type": "stat",
+          "settings": {
+            "number": "60k",
+            "title": "Franchise",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        }
+      },
+      "block_order": [
+        "stat_h4mRxT",
+        "stat_n2WkTb",
+        "stat_Ry8fQd",
+        "stat_9mLpXe"
+      ],
+      "name": "About section",
+      "settings": {
+        "eyebrow": "Integrity. Growth. Leadership.",
+        "heading": "Core Values",
+        "description": "<p>We’re passionate & believe in motivating leadership. We focus to move forward in faith than following a superstitious path. Relentless growth but not alone: We aim at team building and its management. We believe in doing the right things with integrity, honesty, and reliability.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_bg_color": "#f2955a",
+        "button_text_color": "#ffffff",
+        "eyebrow_color": "#2f8fbf",
+        "eyebrow_font_size": 15,
+        "heading_color": "#143f71",
+        "heading_font_size": 38,
+        "heading_font_weight": "800",
+        "description_color": "#001227",
+        "description_font_size": 16,
+        "image": "shopify://shop_images/Group_26056.png",
+        "image_alt": "",
+        "image_radius": 24,
+        "image_width": 500,
+        "image_height": 560,
+        "image_height_mobile": 320,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Group_26059.png",
+        "stats_columns_desktop": 4,
+        "stats_columns_mobile": 2,
+        "column_gap": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "custom_testimonials_section_Vn8Rqk": {
+      "type": "custom-testimonials-section",
+      "blocks": {
+        "testimonial_kR4mWp": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788.png",
+            "name": "Krishnaveni Ji",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>Am really grateful to be a part of the pinnacle vastu .it gives immense opportunity for everyone associated with it.its an amazing experience working with this organisation! Vastu products are of high quality &value. Everything is done very professionally</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        },
+        "testimonial_dT7yLb": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788_6b97be00-2b32-47b9-9295-7929373eba98.png",
+            "name": "Payal",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>My overall experience with pinnacle vastu is really amazing. Truly professional and upto the mark services are really appreciable.Vastu remedies are authentic and result oriented .I highly recommend PINNACLE VASTU CONSULTANTS</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        },
+        "testimonial_hN2sQx": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788.png",
+            "name": "Neeraj",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>I am feeling proud to be the part of Pinnacle Vastu. Pinnacle Vastu is not only a brand.. It the best way for everyone to enlighten their lives. This brand gives immense opportunities.</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        },
+        "testimonial_card_ccneqx": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/788_6b97be00-2b32-47b9-9295-7929373eba98.png",
+            "name": "Neeraj",
+            "designation": "",
+            "rating": 5,
+            "text": "<p>I am feeling proud to be the part of Pinnacle Vastu. Pinnacle Vastu is not only a brand.. It the best way for everyone to enlighten their lives. This brand gives immense opportunities.</p>",
+            "card_bg_color": "#ffffff",
+            "card_radius": 18,
+            "card_shadow": true,
+            "name_color": "#143f71",
+            "text_color": "#3a4b5c",
+            "star_color": "#f5a623"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_kR4mWp",
+        "testimonial_dT7yLb",
+        "testimonial_hN2sQx",
+        "testimonial_card_ccneqx"
+      ],
+      "name": "Testimonials carousel",
+      "settings": {
+        "heading": "Testimonials",
+        "heading_font_size": 34,
+        "heading_color": "#143f71",
+        "subheading": "What people are saying about us.",
+        "subheading_font_size": 16,
+        "subheading_color": "#2f8fbf",
+        "background_color": "#fdf6ea",
+        "background_image": "shopify://shop_images/Group_26057.png",
+        "enable_slider": true,
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "slide_gap": 24,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "infinite_loop": true,
+        "show_pagination": true,
+        "show_nav_arrows": true,
+        "arrow_size": 40,
+        "arrow_color": "#0b2e4e",
+        "arrow_bg_color": "#ffffff",
+        "arrow_radius": 50,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "custom_captured_highlights_HKKkGP": {
+      "type": "custom-captured-highlights",
+      "blocks": {
+        "gallery_item_zNErpc": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_166.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#ffffff",
+            "card_radius": 16
+          }
+        },
+        "gallery_item_eURqdz": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_164.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#ffffff",
+            "card_radius": 16
+          }
+        },
+        "gallery_item_K8VUDV": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_165.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#ffffff",
+            "card_radius": 16
+          }
+        },
+        "gallery_item_Jhq8U9": {
+          "type": "gallery_item",
+          "settings": {
+            "gallery_type": "photo",
+            "image": "shopify://shop_images/Image_165.png",
+            "video_url": "",
+            "alt": "",
+            "title": "",
+            "description": "",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "show_play_icon": true,
+            "play_icon_color": "#ffffff",
+            "card_radius": 16
+          }
+        }
+      },
+      "block_order": [
+        "gallery_item_zNErpc",
+        "gallery_item_eURqdz",
+        "gallery_item_K8VUDV",
+        "gallery_item_Jhq8U9"
+      ],
+      "name": "Captured highlights",
+      "settings": {
+        "heading": "Captured Highlights",
+        "heading_font_size": 34,
+        "heading_color": "#143f71",
+        "subheading": "Captured moments of inspiration and excellence",
+        "subheading_font_size": 16,
+        "subheading_color": "#2f8fbf",
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Group_26057.png",
+        "enable_tabs": true,
+        "tab_photo_label": "Photo",
+        "tab_video_label": "Video",
+        "tab_active_bg": "#f2955a",
+        "tab_active_text": "#ffffff",
+        "tab_inactive_bg": "#f6eeeb",
+        "tab_inactive_text": "#001227",
+        "tab_radius": 4,
+        "tab_spacing": 6,
+        "enable_slider": true,
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "slide_gap": 24,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "infinite_loop": true,
+        "show_pagination": true,
+        "show_nav_arrows": true,
+        "arrow_size": 40,
+        "arrow_color": "#0b2e4e",
+        "arrow_bg_color": "#ffffff",
+        "arrow_radius": 50,
+        "padding_top": 28,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "custom_about_section_Y8mtkC": {
+      "type": "custom-about-section",
+      "blocks": {
+        "stat_rLTRB8": {
+          "type": "stat",
+          "settings": {
+            "number": "99+",
+            "title": "Trusted by Million Clients",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        },
+        "stat_3XTX3B": {
+          "type": "stat",
+          "settings": {
+            "number": "25+",
+            "title": "Years of Experience",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        },
+        "stat_QRBnVN": {
+          "type": "stat",
+          "settings": {
+            "number": "10+",
+            "title": "Types of Horoscopes",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        },
+        "stat_ec3e9m": {
+          "type": "stat",
+          "settings": {
+            "number": "99+",
+            "title": "Qualified Astrologers",
+            "circle_color": "#bfe3f5",
+            "number_color": "#2f8fbf",
+            "title_color": "#143f71"
+          }
+        }
+      },
+      "block_order": [
+        "stat_rLTRB8",
+        "stat_3XTX3B",
+        "stat_QRBnVN",
+        "stat_ec3e9m"
+      ],
+      "name": "About section",
+      "settings": {
+        "eyebrow": "Since 2010",
+        "heading": "About Pinnacle Vastu",
+        "description": "<p>Occult Sciences is a concept of healing and therapeutic energies that extends a better living style, and Pinnacle Vastu is extensively working on the remedies and practical analysis of the situation. From learning to implementing, Pinnacle Vastu offers it all. With over 60 franchises spread across India including Dubai and Australia, Pinnacle Vastu is dedicated to the services like Vastu, Numerology, and Astrology Consultancy, Courses, and Remedies. In all, Pinnacle Vastu is a one-stop destination for Occult Sciences and its application.</p>",
+        "button_label": "Read More",
+        "button_link": "",
+        "button_bg_color": "#f2955a",
+        "button_text_color": "#ffffff",
+        "eyebrow_color": "#2f8fbf",
+        "eyebrow_font_size": 15,
+        "heading_color": "#143f71",
+        "heading_font_size": 38,
+        "heading_font_weight": "800",
+        "description_color": "#001227",
+        "description_font_size": 16,
+        "image": "shopify://shop_images/Group_26058.png",
+        "image_alt": "",
+        "image_radius": 24,
+        "image_width": 500,
+        "image_height": 560,
+        "image_height_mobile": 320,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Group_26059.png",
+        "stats_columns_desktop": 4,
+        "stats_columns_mobile": 2,
+        "column_gap": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "custom_cost_calculator_U7DKHz": {
+      "type": "custom-cost-calculator",
+      "blocks": {
+        "form_field_yALCUX": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "text",
+            "name": "name",
+            "label": "",
+            "placeholder": "Your Name",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_zEYHnB": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "email",
+            "name": "email",
+            "label": "",
+            "placeholder": "Email",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_AtHq4E": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "text",
+            "name": "city",
+            "label": "",
+            "placeholder": "City",
+            "required": false,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_wLBHdp": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "phone",
+            "name": "phone",
+            "label": "",
+            "placeholder": "Phone Number",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_pQFjtP": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "dropdown",
+            "name": "course",
+            "label": "",
+            "placeholder": "Choose a Course",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        }
+      },
+      "block_order": [
+        "form_field_yALCUX",
+        "form_field_zEYHnB",
+        "form_field_AtHq4E",
+        "form_field_wLBHdp",
+        "form_field_pQFjtP"
+      ],
+      "name": "Cost calculator",
+      "settings": {
+        "background_image": "shopify://shop_images/Rectangle_7672.png",
+        "enable_overlay": true,
+        "overlay_color": "#0b2e4e",
+        "overlay_opacity": 15,
+        "banner_height": 520,
+        "banner_height_mobile": 280,
+        "heading": "<p>This is a Life Transformation window to fill and attend. No one can miss even</p>",
+        "subheading": "",
+        "text_alignment": "right",
+        "heading_color": "#ffffff",
+        "subheading_color": "#f1f1f1",
+        "content_max_width": 620,
+        "heading_font_size": 30,
+        "card_bg_type": "gradient",
+        "card_bg_color": "#7bcee6",
+        "card_gradient_end": "#e39867",
+        "card_radius": 28,
+        "card_max_width": 1000,
+        "card_padding": 52,
+        "card_spacing": 8,
+        "card_eyebrow": "Cost",
+        "card_heading": "Calculator",
+        "card_heading_color": "#ffffff",
+        "form_type": "shopify_contact",
+        "custom_action_url": "",
+        "success_message": "Thanks! We will get back to you shortly.",
+        "error_message": "Something went wrong. Please try again.",
+        "button_text": "Get Estimate",
+        "button_link": "",
+        "button_bg_color": "#f2955a",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
+        "button_radius": 10,
+        "button_hover_bg_color": "#e0824a",
+        "button_width": "auto",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_blog_carousel_wUtVnr": {
+      "type": "custom-blog-carousel",
+      "name": "Custom blog carousel",
+      "settings": {
+        "blog": "news",
+        "post_limit": 4,
+        "heading": "Latest Blogs",
+        "heading_color": "#143f71",
+        "subheading": "Stay updated with insights, trends, and tips.",
+        "subheading_color": "#2f8fbf",
+        "show_view_all_mobile": true,
+        "view_all_label": "View All",
+        "view_all_link": "",
+        "background_color": "#fbf3e3",
+        "background_image": "shopify://shop_images/Group_26059_bfed953a-8f58-42d0-8e3e-8c3379facf34.png",
+        "show_image": true,
+        "show_date": true,
+        "show_excerpt": true,
+        "excerpt_length": 20,
+        "show_button": true,
+        "button_label": "View Detail",
+        "card_bg_color": "#ffffff",
+        "card_radius": 20,
+        "date_color": "#2f8fbf",
+        "title_color": "#143f71",
+        "excerpt_color": "#55677a",
+        "button_color": "#f2955a",
+        "enable_slider": true,
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "slide_gap": 28,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "infinite_loop": true,
+        "show_pagination": true,
+        "show_nav_arrows": true,
+        "arrow_color": "#0b2e4e",
+        "arrow_bg_color": "#ffffff",
+        "arrow_active_color": "#f2955a",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "custom_slide_QXFfM8",
+    "custom_services_grid_7gwPR4",
+    "custom_promo_highlight_gMXNFi",
+    "custom_premium_services_fcM4Wf",
+    "custom_feature_collection_ErPawq",
+    "custom_nested_slider_section_KqUrXJ",
+    "custom_collection_grid_LhFm7W",
+    "custom_franchise_carousel_BexBVe",
+    "rich_text_MkFUzL",
+    "custom_about_section_qA7vLp",
+    "custom_testimonials_section_Vn8Rqk",
+    "custom_captured_highlights_HKKkGP",
+    "custom_about_section_Y8mtkC",
+    "custom_cost_calculator_U7DKHz",
+    "custom_blog_carousel_wUtVnr"
   ]
 }

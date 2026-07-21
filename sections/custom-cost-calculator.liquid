@@ -1,0 +1,604 @@
+{{ 'custom-cost-calculator.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-cost-calculator.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .cost-calc-{{ section.id }} {
+    --cc-heading-color: {{ section.settings.heading_color }};
+    --cc-subheading-color: {{ section.settings.subheading_color }};
+    --cc-content-max-width: {{ section.settings.content_max_width }}px;
+    --cc-heading-font-size-mobile: {{ section.settings.heading_font_size | times: 0.6 | round: 0 }}px;
+    --cc-heading-font-size: {{ section.settings.heading_font_size }}px;
+    --cc-banner-height-mobile: {{ section.settings.banner_height_mobile }}px;
+    --cc-banner-height: {{ section.settings.banner_height }}px;
+    --cc-overlay-color: {{ section.settings.overlay_color }};
+    --cc-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --cc-card-bg-color: {{ section.settings.card_bg_color }};
+    --cc-card-gradient: linear-gradient(100deg, {{ section.settings.card_bg_color }}, {{ section.settings.card_gradient_end }});
+    --cc-card-radius: {{ section.settings.card_radius }}px;
+    --cc-card-max-width: {{ section.settings.card_max_width }}px;
+    --cc-card-padding: {{ section.settings.card_padding }}px;
+    --cc-card-spacing: {{ section.settings.card_spacing }}px;
+    --cc-card-heading-color: {{ section.settings.card_heading_color }};
+    --cc-button-bg-color: {{ section.settings.button_bg_color }};
+    --cc-button-text-color: {{ section.settings.button_text_color }};
+    --cc-button-border-color: {{ section.settings.button_border_color }};
+    --cc-button-radius: {{ section.settings.button_radius }}px;
+    --cc-button-hover-bg-color: {{ section.settings.button_hover_bg_color }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .cost-calc-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="cost-calc cost-calc-{{ section.id }} cost-calc--align-{{ section.settings.text_alignment }}">
+  <div
+    class="cost-calc__banner"
+    style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
+  >
+    {%- if section.settings.background_image_mobile != blank -%}
+      <div
+        class="cost-calc__banner-mobile-bg"
+        style="background-image: url('{{ section.settings.background_image_mobile | image_url: width: 900 }}');"
+      ></div>
+    {%- endif -%}
+
+    {%- if section.settings.enable_overlay -%}
+      <div class="cost-calc__overlay"></div>
+    {%- endif -%}
+
+    <div class="cost-calc__banner-inner page-width">
+      <div class="cost-calc__content">
+        {%- if section.settings.heading != blank -%}
+          <div class="cost-calc__heading">{{ section.settings.heading }}</div>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="cost-calc__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="cost-calc__card-wrap page-width">
+    <div class="cost-calc__card cost-calc__card--{{ section.settings.card_bg_type }} cost-calc__card--shadow">
+      <div class="cost-calc__card-heading">
+        {%- if section.settings.card_eyebrow != blank -%}
+          <p class="cost-calc__card-eyebrow">{{ section.settings.card_eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.card_heading != blank -%}
+          <h3 class="cost-calc__card-title">{{ section.settings.card_heading | escape }}</h3>
+        {%- endif -%}
+      </div>
+
+      <div class="cost-calc__form-wrap">
+        {%- liquid
+          assign form_id = 'CostCalcForm-' | append: section.id
+        -%}
+
+        {%- if section.settings.form_type == 'shopify_contact' -%}
+          {%- form 'contact', id: form_id, class: 'cost-calc__form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="cost-calc__message cost-calc__message--success">
+                {{ section.settings.success_message | default: 'Thanks! We will get back to you shortly.' }}
+              </div>
+            {%- elsif form.errors -%}
+              <div class="cost-calc__message cost-calc__message--error">
+                {{ section.settings.error_message | default: 'Something went wrong. Please try again.' }}
+              </div>
+            {%- endif -%}
+
+            <div class="cost-calc__fields">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'form_field' -%}
+                  {%- render 'cost-calc-field', block: block, form_prefix: 'contact[' -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- render 'cost-calc-submit', settings: section.settings -%}
+            </div>
+          {%- endform -%}
+        {%- else -%}
+          <form
+            id="{{ form_id }}"
+            class="cost-calc__form"
+            action="{{ section.settings.custom_action_url }}"
+            method="post"
+            data-cost-calc-form
+            data-success-message="{{ section.settings.success_message | default: 'Thanks! We will get back to you shortly.' | escape }}"
+            data-error-message="{{ section.settings.error_message | default: 'Something went wrong. Please try again.' | escape }}"
+          >
+            <div class="cost-calc__message" data-form-message hidden></div>
+
+            <div class="cost-calc__fields">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'form_field' -%}
+                  {%- render 'cost-calc-field', block: block, form_prefix: '' -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- render 'cost-calc-submit', settings: section.settings -%}
+            </div>
+          </form>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cost calculator",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 20,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Banner background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Mobile background image",
+      "info": "Optional. Falls back to the desktop image."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "Enable overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#0B2E4E"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "label": "Banner height (desktop)",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "min": 150,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Banner height (mobile)",
+      "default": 340
+    },
+    {
+      "type": "header",
+      "content": "Banner content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Know your project cost in minutes.</p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get an instant estimate tailored to your needs."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "right",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#F1F1F1"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 300,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum content width",
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Floating card"
+    },
+    {
+      "type": "select",
+      "id": "card_bg_type",
+      "label": "Card background type",
+      "default": "gradient",
+      "options": [
+        { "value": "solid", "label": "Solid color" },
+        { "value": "gradient", "label": "Gradient" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background color",
+      "default": "#4FA8D8"
+    },
+    {
+      "type": "color",
+      "id": "card_gradient_end",
+      "label": "Gradient end color",
+      "default": "#F2955A"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "card_max_width",
+      "min": 600,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "label": "Card width",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "card_spacing",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Card spacing",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Card heading"
+    },
+    {
+      "type": "text",
+      "id": "card_eyebrow",
+      "label": "Small heading",
+      "default": "Cost"
+    },
+    {
+      "type": "text",
+      "id": "card_heading",
+      "label": "Main heading",
+      "default": "Calculator"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Form integration"
+    },
+    {
+      "type": "select",
+      "id": "form_type",
+      "label": "Submit form to",
+      "default": "shopify_contact",
+      "options": [
+        { "value": "shopify_contact", "label": "Shopify contact form (emails the store)" },
+        { "value": "custom", "label": "Custom / third-party action URL" }
+      ]
+    },
+    {
+      "type": "url",
+      "id": "custom_action_url",
+      "label": "Custom form action URL",
+      "info": "Used only when 'Custom / third-party action URL' is selected."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks! We will get back to you shortly."
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "label": "Error message",
+      "default": "Something went wrong. Please try again."
+    },
+    {
+      "type": "header",
+      "content": "Submit button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Get Estimate"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "Optional. If set, the button becomes a link instead of submitting the form."
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background color",
+      "default": "#F2955A"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Hover background color",
+      "default": "#E0824A"
+    },
+    {
+      "type": "select",
+      "id": "button_width",
+      "label": "Button width",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Fit content" },
+        { "value": "full", "label": "Full width" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "form_field",
+      "name": "Form field",
+      "settings": [
+        {
+          "type": "select",
+          "id": "field_type",
+          "label": "Field type",
+          "default": "text",
+          "options": [
+            { "value": "text", "label": "Text field" },
+            { "value": "email", "label": "Email field" },
+            { "value": "phone", "label": "Phone number" },
+            { "value": "dropdown", "label": "Dropdown select" },
+            { "value": "textarea", "label": "Textarea" },
+            { "value": "checkbox", "label": "Checkbox" },
+            { "value": "hidden", "label": "Hidden field" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Field name (key)",
+          "info": "Used as the submitted field name. Letters, numbers and underscores only.",
+          "default": "field"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Field label",
+          "default": "Label"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder text"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Field width",
+          "default": "100",
+          "options": [
+            { "value": "50", "label": "50%" },
+            { "value": "100", "label": "100%" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "default_value",
+          "label": "Default value",
+          "info": "For checkboxes, the value submitted when checked (defaults to \"yes\"). For hidden fields, the value sent."
+        },
+        {
+          "type": "text",
+          "id": "error_message",
+          "label": "Custom error message",
+          "info": "Shown when this field fails validation."
+        },
+        {
+          "type": "header",
+          "content": "Dropdown options"
+        },
+        {
+          "type": "textarea",
+          "id": "options",
+          "label": "Options",
+          "info": "Dropdown only. One option per line.",
+          "default": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading"
+        },
+        {
+          "type": "text",
+          "id": "default_option",
+          "label": "Default selected option",
+          "info": "Dropdown only. Must match an option exactly."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cost calculator",
+      "blocks": [
+        {
+          "type": "form_field",
+          "settings": { "field_type": "text", "name": "name", "label": "", "placeholder": "Your Name", "required": true, "width": "50" }
+        },
+        {
+          "type": "form_field",
+          "settings": { "field_type": "email", "name": "email", "label": "", "placeholder": "Email", "required": true, "width": "50" }
+        },
+        {
+          "type": "form_field",
+          "settings": { "field_type": "text", "name": "city", "label": "", "placeholder": "City", "required": false, "width": "50" }
+        },
+        {
+          "type": "form_field",
+          "settings": { "field_type": "phone", "name": "phone", "label": "", "placeholder": "Phone Number", "required": true, "width": "50" }
+        },
+        {
+          "type": "form_field",
+          "settings": {
+            "field_type": "dropdown",
+            "name": "course",
+            "label": "",
+            "placeholder": "Choose a Course",
+            "required": true,
+            "width": "50",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

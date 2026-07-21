@@ -1014,7 +1014,7 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "show_play_icon": true,
-            "play_icon_color": "#FFFFFF",
+            "play_icon_color": "#ffffff",
             "card_radius": 16
           }
         },
@@ -1031,7 +1031,7 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "show_play_icon": true,
-            "play_icon_color": "#FFFFFF",
+            "play_icon_color": "#ffffff",
             "card_radius": 16
           }
         },
@@ -1048,7 +1048,7 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "show_play_icon": true,
-            "play_icon_color": "#FFFFFF",
+            "play_icon_color": "#ffffff",
             "card_radius": 16
           }
         },
@@ -1065,7 +1065,7 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "show_play_icon": true,
-            "play_icon_color": "#FFFFFF",
+            "play_icon_color": "#ffffff",
             "card_radius": 16
           }
         }
@@ -1080,18 +1080,18 @@
       "settings": {
         "heading": "Captured Highlights",
         "heading_font_size": 34,
-        "heading_color": "#143F71",
+        "heading_color": "#143f71",
         "subheading": "Captured moments of inspiration and excellence",
         "subheading_font_size": 16,
-        "subheading_color": "#2F8FBF",
-        "background_color": "#FFFFFF",
+        "subheading_color": "#2f8fbf",
+        "background_color": "#ffffff",
         "background_image": "shopify://shop_images/Group_26057.png",
         "enable_tabs": true,
         "tab_photo_label": "Photo",
         "tab_video_label": "Video",
-        "tab_active_bg": "#F2955A",
-        "tab_active_text": "#FFFFFF",
-        "tab_inactive_bg": "#F6EEEB",
+        "tab_active_bg": "#f2955a",
+        "tab_active_text": "#ffffff",
+        "tab_inactive_bg": "#f6eeeb",
         "tab_inactive_text": "#001227",
         "tab_radius": 4,
         "tab_spacing": 6,
@@ -1106,8 +1106,8 @@
         "show_pagination": true,
         "show_nav_arrows": true,
         "arrow_size": 40,
-        "arrow_color": "#0B2E4E",
-        "arrow_bg_color": "#FFFFFF",
+        "arrow_color": "#0b2e4e",
+        "arrow_bg_color": "#ffffff",
         "arrow_radius": 50,
         "padding_top": 28,
         "padding_bottom": 64,
@@ -1117,6 +1117,135 @@
         "margin_bottom": 0,
         "margin_top_mobile": 0,
         "margin_bottom_mobile": 0
+      }
+    },
+    "custom_cost_calculator_U7DKHz": {
+      "type": "custom-cost-calculator",
+      "blocks": {
+        "form_field_yALCUX": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "text",
+            "name": "name",
+            "label": "",
+            "placeholder": "Your Name",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_zEYHnB": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "email",
+            "name": "email",
+            "label": "",
+            "placeholder": "Email",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_AtHq4E": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "text",
+            "name": "city",
+            "label": "",
+            "placeholder": "City",
+            "required": false,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_wLBHdp": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "phone",
+            "name": "phone",
+            "label": "",
+            "placeholder": "Phone Number",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        },
+        "form_field_pQFjtP": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "dropdown",
+            "name": "course",
+            "label": "",
+            "placeholder": "Choose a Course",
+            "required": true,
+            "width": "50",
+            "default_value": "",
+            "error_message": "",
+            "options": "Astrology\nNumerology\nVastu\nPalmistry\nTarot Reading",
+            "default_option": ""
+          }
+        }
+      },
+      "block_order": [
+        "form_field_yALCUX",
+        "form_field_zEYHnB",
+        "form_field_AtHq4E",
+        "form_field_wLBHdp",
+        "form_field_pQFjtP"
+      ],
+      "name": "Cost calculator",
+      "settings": {
+        "background_image": "shopify://shop_images/Rectangle_7672.png",
+        "enable_overlay": true,
+        "overlay_color": "#0b2e4e",
+        "overlay_opacity": 15,
+        "banner_height": 520,
+        "banner_height_mobile": 280,
+        "heading": "<p>This is a Life Transformation window to fill and attend. No one can miss even</p>",
+        "subheading": "",
+        "text_alignment": "right",
+        "heading_color": "#ffffff",
+        "subheading_color": "#f1f1f1",
+        "content_max_width": 620,
+        "heading_font_size": 30,
+        "card_bg_type": "gradient",
+        "card_bg_color": "#7BCEE6",
+        "card_gradient_end": "#E39867",
+        "card_radius": 28,
+        "card_max_width": 1000,
+        "card_padding": 52,
+        "card_spacing": 8,
+        "card_eyebrow": "Cost",
+        "card_heading": "Calculator",
+        "card_heading_color": "#ffffff",
+        "form_type": "shopify_contact",
+        "custom_action_url": "",
+        "success_message": "Thanks! We will get back to you shortly.",
+        "error_message": "Something went wrong. Please try again.",
+        "button_text": "Get Estimate",
+        "button_link": "",
+        "button_bg_color": "#f2955a",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
+        "button_radius": 10,
+        "button_hover_bg_color": "#e0824a",
+        "button_width": "auto",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
       }
     }
   },
@@ -1134,6 +1263,7 @@
     "custom_about_section_qA7vLp",
     "rich_text_MkFUzL",
     "custom_testimonials_section_Vn8Rqk",
-    "custom_captured_highlights_HKKkGP"
+    "custom_captured_highlights_HKKkGP",
+    "custom_cost_calculator_U7DKHz"
   ]
 }

@@ -1,0 +1,19 @@
+{%- liquid
+  assign width_class = ''
+  if settings.button_width == 'full'
+    assign width_class = ' cost-calc__submit--full'
+  endif
+-%}
+
+<div class="cost-calc__field cost-calc__field--submit{% if settings.button_width == 'full' %} cost-calc__field--w100{% endif %}">
+  {%- if settings.button_link != blank -%}
+    <a href="{{ settings.button_link }}" class="cost-calc__submit{{ width_class }}">
+      {{- settings.button_text | escape -}}
+    </a>
+  {%- else -%}
+    <button type="submit" class="cost-calc__submit{{ width_class }}" data-cost-calc-submit>
+      <span class="cost-calc__submit-text">{{ settings.button_text | escape }}</span>
+      <span class="cost-calc__submit-spinner" aria-hidden="true"></span>
+    </button>
+  {%- endif -%}
+</div>

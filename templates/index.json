@@ -1221,8 +1221,8 @@
         "content_max_width": 620,
         "heading_font_size": 30,
         "card_bg_type": "gradient",
-        "card_bg_color": "#7BCEE6",
-        "card_gradient_end": "#E39867",
+        "card_bg_color": "#7bcee6",
+        "card_gradient_end": "#e39867",
         "card_radius": 28,
         "card_max_width": 1000,
         "card_padding": 52,
@@ -1247,6 +1247,52 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 40
       }
+    },
+    "custom_blog_carousel_wUtVnr": {
+      "type": "custom-blog-carousel",
+      "name": "Custom blog carousel",
+      "settings": {
+        "blog": "news",
+        "post_limit": 4,
+        "heading": "Latest Blogs",
+        "heading_color": "#143f71",
+        "subheading": "Stay updated with insights, trends, and tips.",
+        "subheading_color": "#2f8fbf",
+        "show_view_all_mobile": true,
+        "view_all_label": "View All",
+        "view_all_link": "",
+        "background_color": "#fbf3e3",
+        "background_image": "shopify://shop_images/Group_26059_bfed953a-8f58-42d0-8e3e-8c3379facf34.png",
+        "show_image": true,
+        "show_date": true,
+        "show_excerpt": true,
+        "excerpt_length": 20,
+        "show_button": true,
+        "button_label": "View Detail",
+        "card_bg_color": "#ffffff",
+        "card_radius": 20,
+        "date_color": "#2f8fbf",
+        "title_color": "#143f71",
+        "excerpt_color": "#55677a",
+        "button_color": "#f2955a",
+        "enable_slider": true,
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "slide_gap": 28,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "infinite_loop": true,
+        "show_pagination": true,
+        "show_nav_arrows": true,
+        "arrow_color": "#0b2e4e",
+        "arrow_bg_color": "#ffffff",
+        "arrow_active_color": "#f2955a",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
@@ -1264,6 +1310,7 @@
     "rich_text_MkFUzL",
     "custom_testimonials_section_Vn8Rqk",
     "custom_captured_highlights_HKKkGP",
-    "custom_cost_calculator_U7DKHz"
+    "custom_cost_calculator_U7DKHz",
+    "custom_blog_carousel_wUtVnr"
   ]
 }

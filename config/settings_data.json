@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "logo_width": 90,
+    "logo": "shopify://shop_images/Group_21190.svg",
+    "logo_width": 220,
     "type_header_font": "poppins_n4",
     "heading_scale": 100,
     "type_body_font": "poppins_n5",
@@ -106,13 +107,13 @@
     "sale_badge_color_scheme": "scheme-4",
     "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "",
-    "brand_description": "<p></p>",
+    "brand_description": "<p>Vaastu Shastra And Numerology Are Interelated With Each Other With Respect To The Directions. Every Direction In Vaastu Is Governed By A Particular Planet. Each Planet Has Its Number And Colour Also. Each Direction Has It`S Own Significance And Utilization As Per Vaastu Shastra.</p>",
     "brand_image_width": 100,
-    "social_facebook_link": "",
-    "social_instagram_link": "",
-    "social_youtube_link": "",
+    "social_facebook_link": "https://facebook.com/shopify",
+    "social_instagram_link": "https://instagram.com/shopify",
+    "social_youtube_link": "https://youtube.com/shopify",
     "social_tiktok_link": "",
-    "social_twitter_link": "",
+    "social_twitter_link": "https://twitter.com/shopify",
     "social_snapchat_link": "",
     "social_pinterest_link": "",
     "social_tumblr_link": "",

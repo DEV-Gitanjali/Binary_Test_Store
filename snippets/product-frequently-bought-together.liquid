@@ -1,0 +1,135 @@
+{% comment %}
+  Renders a "Frequently Bought Together" widget: photo cards (with checkboxes)
+  for the current product plus its complementary recommendations on the left,
+  and a text summary (price list, running total, combined add-to-cart button)
+  on the right, both in one row.
+
+  Accepts:
+  - block: {Object} the 'complementary' block instance (reused for its
+    block_heading and product_list_limit settings)
+
+  Usage:
+  {% render 'product-frequently-bought-together', block: block %}
+{% endcomment %}
+<product-recommendations
+  class="frequently-bought-together-loader quick-add-hidden"
+  data-url="{{ routes.product_recommendations_url }}?limit={{ block.settings.product_list_limit }}&intent=complementary"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    {%- assign current_variant = product.selected_or_first_available_variant -%}
+    {%- assign fbt_item_count = recommendations.products_count | plus: 1 -%}
+    <frequently-bought-together
+      class="frequently-bought-together"
+      data-currency="{{ cart.currency.iso_code | default: shop.currency }}"
+      data-locale="{{ request.locale.iso_code }}"
+    >
+      <h2 class="h3 frequently-bought-together__heading">
+        {{ block.settings.block_heading | default: 'Frequently Bought Together' }}
+      </h2>
+      <div class="frequently-bought-together__row">
+        <div class="frequently-bought-together__items">
+          <div class="frequently-bought-together__item frequently-bought-together__item--current">
+            <span class="frequently-bought-together__media-wrap">
+              <label class="frequently-bought-together__checkbox-wrap">
+                <input type="checkbox" checked disabled class="frequently-bought-together__checkbox">
+                <span class="frequently-bought-together__checkmark" aria-hidden="true">
+                  {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                </span>
+              </label>
+              <span class="frequently-bought-together__media">
+                {{
+                  product.featured_media
+                  | image_url: width: 200
+                  | image_tag: loading: 'lazy', widths: '100, 150, 200', alt: product.featured_media.alt
+                }}
+              </span>
+            </span>
+            <div class="frequently-bought-together__info">
+              <p class="frequently-bought-together__title">{{ product.title }}</p>
+              <p class="frequently-bought-together__price">{{ current_variant.price | money }}</p>
+            </div>
+          </div>
+          {%- for rec_product in recommendations.products limit: block.settings.product_list_limit -%}
+            {%- assign rec_variant = rec_product.selected_or_first_available_variant -%}
+            <span class="frequently-bought-together__plus" aria-hidden="true">+</span>
+            <div class="frequently-bought-together__item">
+              <span class="frequently-bought-together__media-wrap">
+                <label class="frequently-bought-together__checkbox-wrap">
+                  <input
+                    type="checkbox"
+                    checked
+                    class="frequently-bought-together__checkbox"
+                    data-variant-id="{{ rec_variant.id }}"
+                    data-price-cents="{{ rec_variant.price }}"
+                  >
+                  <span class="frequently-bought-together__checkmark" aria-hidden="true">
+                    {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                  </span>
+                </label>
+                <span class="frequently-bought-together__media">
+                  {{
+                    rec_product.featured_media
+                    | image_url: width: 200
+                    | image_tag: loading: 'lazy', widths: '100, 150, 200', alt: rec_product.featured_media.alt
+                  }}
+                </span>
+              </span>
+              <div class="frequently-bought-together__info">
+                <p class="frequently-bought-together__title">{{ rec_product.title }}</p>
+                <p class="frequently-bought-together__price">{{ rec_variant.price | money }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="frequently-bought-together__summary">
+          <ul class="frequently-bought-together__summary-list list-unstyled">
+            <li class="frequently-bought-together__summary-row">
+              <span class="frequently-bought-together__summary-label">
+                <span class="frequently-bought-together__current-label">
+                  {{- 'products.product.current_item' | t -}}
+                </span>
+                {{ product.title }}
+              </span>
+              <span class="frequently-bought-together__summary-price">{{ current_variant.price | money }}</span>
+            </li>
+            {%- for rec_product in recommendations.products limit: block.settings.product_list_limit -%}
+              {%- assign rec_variant = rec_product.selected_or_first_available_variant -%}
+              <li class="frequently-bought-together__summary-row">
+                <span class="frequently-bought-together__summary-label">{{ rec_product.title }}</span>
+                <span class="frequently-bought-together__summary-price">{{ rec_variant.price | money }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <div class="frequently-bought-together__footer">
+            <p class="frequently-bought-together__total">
+              {{- 'products.product.total' | t -}}
+              <span
+                class="frequently-bought-together__total-price"
+                data-fbt-total
+                data-current-price-cents="{{ current_variant.price }}"
+              >
+                {{- current_variant.price | money -}}
+              </span>
+            </p>
+            <button
+              type="button"
+              class="button button--primary frequently-bought-together__add-button"
+              data-fbt-add-button
+              data-variant-id="{{ current_variant.id }}"
+            >
+              <span data-fbt-button-label>
+                {{- 'products.product.add_items_to_cart' | t: count: fbt_item_count -}}
+              </span>
+              {%- render 'loading-spinner' -%}
+            </button>
+            <div class="frequently-bought-together__error-message-wrapper" role="alert" hidden>
+              <span class="frequently-bought-together__error-message"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </frequently-bought-together>
+  {%- endif -%}
+</product-recommendations>

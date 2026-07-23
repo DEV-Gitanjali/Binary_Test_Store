@@ -10,6 +10,7 @@
 .product .rating-star {
   --letter-spacing: 0.8;
   --font-size: 1.7;
+  --color-rating-star: rgb(245, 166, 35);
 }
 
 .card-wrapper .rating-star {

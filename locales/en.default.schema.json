@@ -2093,7 +2093,13 @@
           "name": "Title"
         },
         "price": {
-          "name": "Price"
+          "name": "Price",
+          "settings": {
+            "show_discount_badge": {
+              "label": "Show discount badge",
+              "info": "Displays a percentage-off badge next to the price when a compare-at price is set."
+            }
+          }
         },
         "inventory": {
           "name": "Inventory status",
@@ -2158,6 +2164,9 @@
             "show_gift_card_recipient": {
               "label": " Gift card sending options",
               "info": "Customers can add a personal message and schedule the send date. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+            },
+            "show_pickup_availability": {
+              "label": "Show pickup availability"
             }
           }
         },
@@ -2201,10 +2210,15 @@
               "default": "Collapsible row"
             },
             "content": {
-              "label": "Row content"
+              "label": "Row content",
+              "info": "To pull this content from a metafield instead, use the dynamic source (lightning bolt) icon in this field's toolbar."
             },
             "page": {
               "label": "Row content from page"
+            },
+            "show_product_description": {
+              "label": "Show product description",
+              "info": "Appends the product's description to this row's content."
             },
             "icon": {
               "label": "Icon",
@@ -2418,6 +2432,9 @@
               },
               "options__2": {
                 "label": "Vertical"
+              },
+              "options__3": {
+                "label": "Card"
               }
             },
             "pairing_1": {
@@ -2437,9 +2454,13 @@
               "label": "Heading",
               "default": "Heading"
             },
+            "text_1": {
+              "label": "Description",
+              "default": "Short description"
+            },
             "pairing_2": {
               "label": "Pairing 2"
-            },            
+            },
             "icon_2": {
               "label": "Icon"
             },
@@ -2450,9 +2471,13 @@
               "label": "Heading",
               "default": "Heading"
             },
+            "text_2": {
+              "label": "Description",
+              "default": "Short description"
+            },
             "pairing_3": {
-            "label": "Pairing 3"
-            },             
+              "label": "Pairing 3"
+            },
             "icon_3": {
               "label": "Icon"
             },
@@ -2462,6 +2487,10 @@
             "heading_3": {
               "label": "Heading",
               "default": "Heading"
+            },
+            "text_3": {
+              "label": "Description",
+              "default": "Short description"
             }
           }
         }

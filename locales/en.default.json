@@ -164,7 +164,14 @@
         "from_price_html": "From {{ price }}",
         "regular_price": "Regular price",
         "sale_price": "Sale price",
-        "unit_price": "Unit price"
+        "unit_price": "Unit price",
+        "discount_off_html": "{{ percentage }}% OFF"
+      },
+      "current_item": "This item",
+      "total": "Total: ",
+      "add_items_to_cart": {
+        "one": "Add {{ count }} item to cart",
+        "other": "Add {{ count }} items to cart"
       },
       "share": "Share this product",
       "sold_out": "Sold out",
